@@ -11,21 +11,23 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
-using wp7rt_client.Classes;
-
-namespace wp7rt_client
+namespace wp7rt_client.Views
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class BoxOffice : PhoneApplicationPage
     {
-        // Constructor
-        public MainPage()
+        public BoxOffice()
         {
             InitializeComponent();
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/BoxOffice", UriKind.Relative));
+            base.OnNavigatedTo(e);            
+        }
+
+        private void listBoxOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //pass
         }
     }
 }

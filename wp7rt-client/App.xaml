@@ -3,10 +3,17 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:nav="clr-namespace:System.Windows.Navigation;assembly=Microsoft.Phone">
 
     <!--Application Resources-->
     <Application.Resources>
+        <nav:UriMapper x:Key="UriMapper">
+            <nav:UriMapper.UriMappings>
+                <nav:UriMapping Uri="/BoxOffice" MappedUri="/Views/BoxOffice.xaml" />
+                <nav:UriMapping Uri="/MovieDetailedView/{movieid}" MappedUri="/Views/MovieDetailedView.xaml?MovieId={movieid}" />
+            </nav:UriMapper.UriMappings>
+        </nav:UriMapper>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

@@ -37,6 +37,9 @@ namespace wp7rt_client
             // Phone-specific initialization
             InitializePhoneApplication();
 
+            //Initialize Uri mapper
+            RootFrame.UriMapper = Resources["UriMapper"] as UriMapper;
+
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
             {
