@@ -11,7 +11,9 @@
         <nav:UriMapper x:Key="UriMapper">
             <nav:UriMapper.UriMappings>
                 <nav:UriMapping Uri="/BoxOffice" MappedUri="/Views/BoxOffice.xaml" />
-                <nav:UriMapping Uri="/MovieDetailedView/{movieid}" MappedUri="/Views/MovieDetailedView.xaml?MovieId={movieid}" />
+                <nav:UriMapping Uri="/MovieDetailedView/" MappedUri="/Views/MovieDetailedView.xaml" />
+                <nav:UriMapping Uri="/SearchResults/{query}/" MappedUri="/Views/SearchResults.xaml?Query={query}" />
+                <nav:UriMapping Uri="/MoviesList/{type}/{query}" MappedUri="/Views/MoviesList.xaml?Type={type}&amp;Query={query}" />                
             </nav:UriMapper.UriMappings>
         </nav:UriMapper>
     </Application.Resources>

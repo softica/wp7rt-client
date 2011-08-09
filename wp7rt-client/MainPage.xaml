@@ -31,8 +31,8 @@
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="1" Margin="23,0,23,88" TextWrapping="Wrap" Text="Enter title here..." VerticalAlignment="Bottom"/>
-            <Button Content="Search" Grid.Column="1" Margin="36,0,36,15" VerticalAlignment="Bottom"/>
+            <TextBox Name="QueryText" Grid.Column="1" Margin="23,0,23,88" TextWrapping="Wrap" Text="Enter title here..." VerticalAlignment="Bottom" GotFocus="QueryText_GotFocus"></TextBox>
+            <Button Content="Search" Grid.Column="1" Margin="36,0,36,15" VerticalAlignment="Bottom" Click="Button_Click" />
             <StackPanel Orientation="Horizontal" Height="107" VerticalAlignment="Top" Grid.Column="1" d:LayoutOverrides="Width, GridBox">
                 <StackPanel Margin="0,17" Orientation="Horizontal">
 
@@ -46,34 +46,25 @@
                 <StackPanel Margin="0,17" Orientation="Horizontal">
 
                     <Image Source="Images/mainViewIcon.jpg" Width="53"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Rentals" />
+                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" MouseLeftButtonDown="Theaters_MouseLeftButtonDown" Text="Theaters" />
 
 
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="107" VerticalAlignment="Top" Grid.Column="1" d:LayoutOverrides="Width, GridBox" Margin="0,218,0,0">
+            <StackPanel Orientation="Horizontal" Height="107" VerticalAlignment="Top" Grid.Column="1" d:LayoutOverrides="Width, GridBox" Margin="0,215,0,0">
                 <StackPanel Margin="0,17" Orientation="Horizontal">
 
                     <Image Source="Images/mainViewIcon.jpg" Width="53"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" Text="DVDs" />
+                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" MouseLeftButtonDown="Openings_MouseLeftButtonDown" Text="Openings" />
 
 
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="1" d:LayoutOverrides="Width, GridBox" Margin="0,325,0,272">
+            <StackPanel Orientation="Horizontal" Height="107" VerticalAlignment="Top" Grid.Column="1" d:LayoutOverrides="Width, GridBox" Margin="0,322,0,0">
                 <StackPanel Margin="0,17" Orientation="Horizontal">
 
                     <Image Source="Images/mainViewIcon.jpg" Width="53"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" Text="Upcoming" />
-
-
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="107" VerticalAlignment="Bottom" d:LayoutOverrides="Width" Margin="0,0,0,165" Grid.Column="1">
-                <StackPanel Margin="0,17" Orientation="Horizontal">
-
-                    <Image Source="Images/mainViewIcon.jpg" Width="53"/>
-                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" Text="In theaters" />
+                    <TextBlock TextWrapping="Wrap" FontSize="28" Margin="10,10,0,0" Style="{StaticResource PhoneTextExtraLargeStyle}" MouseLeftButtonDown="Upcoming_MouseLeftButtonDown" Text="Upcoming" />
 
 
                 </StackPanel>

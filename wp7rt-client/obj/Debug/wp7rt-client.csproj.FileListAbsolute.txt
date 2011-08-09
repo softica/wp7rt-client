@@ -17,3 +17,4 @@ C:\Users\wp7\Projects\wp7rt-client\wp7rt-client\obj\Debug\XapCacheFile.xml
 C:\Users\wp7\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\BoxOffice.g.i.cs
 C:\Users\wp7\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieDetailedView.g.i.cs
 C:\Users\wp7\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\SearchResults.g.i.cs
+C:\Users\wp7\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MoviesList.g.i.cs

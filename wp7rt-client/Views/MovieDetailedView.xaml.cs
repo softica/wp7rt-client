@@ -33,11 +33,11 @@ namespace wp7rt_client.Views
             Synopsis.Text = movie.Synopsis;
 
             System.Diagnostics.Debug.WriteLine(movie.Title);
-            System.Diagnostics.Debug.WriteLine("End of debug!");
-
-            
+            System.Diagnostics.Debug.WriteLine("End of debug!");                     
 
         }
+
+
 
     }
 }

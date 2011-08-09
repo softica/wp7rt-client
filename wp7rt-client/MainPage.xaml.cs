@@ -25,7 +25,32 @@ namespace wp7rt_client
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/BoxOffice", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/MoviesList/BoxOffice/", UriKind.Relative));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/Query/" + QueryText.Text, UriKind.Relative));
+        }
+
+        private void Theaters_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/Theaters/" , UriKind.Relative));
+        }
+
+        private void Openings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/Openings/", UriKind.Relative));
+        }
+
+        private void Upcoming_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/Upcoming/", UriKind.Relative));
+        }
+
+        private void QueryText_GotFocus(object sender, RoutedEventArgs e)
+        {
+            QueryText.Text = "";
         }
     }
 }

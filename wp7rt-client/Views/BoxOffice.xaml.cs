@@ -47,7 +47,6 @@ namespace wp7rt_client.Views
             foreach (var movie in movies)
             {
                 list.Add(movie);
-                System.Diagnostics.Debug.WriteLine(movie.Title);
             }
 
             listBoxOffice.ItemsSource = list;
@@ -58,9 +57,8 @@ namespace wp7rt_client.Views
         {
             if (listBoxOffice.SelectedItem != null)
             {
-                Movie mv = listBoxOffice.SelectedItem as Movie;
                 PhoneApplicationService.Current.State["Movie"] = listBoxOffice.SelectedItem;
-                NavigationService.Navigate(new Uri("/MovieDetailedView/" + mv.RottenTomatoesId, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/MovieDetailedView/", UriKind.Relative));
             }
         }
     }

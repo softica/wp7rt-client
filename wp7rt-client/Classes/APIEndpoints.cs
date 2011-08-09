@@ -22,9 +22,19 @@ namespace wp7rt_client.Classes
         public const string API_KEY = "u4c9z4ewwk2x7dxd6skss4yw";
 
         /// <summary>
+        /// Results per page (default 10).
+        /// </summary>
+        public const string PAGE_LIMIT = "10";
+
+        /// <summary>
+        /// Results per page (default 10).
+        /// </summary>
+        public const string QUERY = "";
+
+        /// <summary>
         /// Endpoint for searching for movies via a text query.
         /// </summary>
-        public const string MOVIE_SEARCH = @"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey={0}&q={1}&page_limit={2}";
+        public const string MOVIE_SEARCH = @"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=" + API_KEY + "&q={0}&page_limit={1}";
 
         /// <summary>
         /// Endpoint for searching for an individual movie via it's RottenTomatoes ID number.
@@ -49,16 +59,16 @@ namespace wp7rt_client.Classes
         /// <summary>
         /// Endpoint for listing movies that are in theaters.
         /// </summary>
-        public const string LIST_IN_THEATERS = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey={0}";
+        public const string LIST_IN_THEATERS = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=" + API_KEY;
 
         /// <summary>
         /// Endpoint for listing opening movies.
         /// </summary>
-        public const string LIST_OPENING_SOON = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/opening.json?apikey={0}";
+        public const string LIST_OPENING_SOON = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/opening.json?apikey=" + API_KEY;
 
         /// <summary>
         /// Endpoint for listing upcoming movies.
         /// </summary>
-        public const string LIST_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey={0}";
+        public const string LIST_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=" + API_KEY;
     }
 }
