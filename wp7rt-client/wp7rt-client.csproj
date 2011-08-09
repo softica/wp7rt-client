@@ -74,6 +74,12 @@
     <Compile Include="Views\BoxOffice.xaml.cs">
       <DependentUpon>BoxOffice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MovieDetailedView.xaml.cs">
+      <DependentUpon>MovieDetailedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchResults.xaml.cs">
+      <DependentUpon>SearchResults.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -85,6 +91,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BoxOffice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MovieDetailedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
+using Microsoft.Phone.Shell;
 
 namespace wp7rt_client.Views
 {
@@ -50,12 +51,17 @@ namespace wp7rt_client.Views
             }
 
             listBoxOffice.ItemsSource = list;
-            System.Diagnostics.Debug.WriteLine("End of debug!");
+            
         }
 
         private void listBoxOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //pass
+            if (listBoxOffice.SelectedItem != null)
+            {
+                Movie mv = listBoxOffice.SelectedItem as Movie;
+                PhoneApplicationService.Current.State["Movie"] = listBoxOffice.SelectedItem;
+                NavigationService.Navigate(new Uri("/MovieDetailedView/" + mv.RottenTomatoesId, UriKind.Relative));
+            }
         }
     }
 }
