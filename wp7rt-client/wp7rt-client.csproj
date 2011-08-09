@@ -71,17 +71,11 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\BoxOffice.xaml.cs">
-      <DependentUpon>BoxOffice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MovieDetailedView.xaml.cs">
       <DependentUpon>MovieDetailedView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MoviesList.xaml.cs">
       <DependentUpon>MoviesList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SearchResults.xaml.cs">
-      <DependentUpon>SearchResults.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -93,19 +87,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BoxOffice.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MovieDetailedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MoviesList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SearchResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

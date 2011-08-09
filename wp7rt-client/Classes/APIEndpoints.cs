@@ -70,5 +70,25 @@ namespace wp7rt_client.Classes
         /// Endpoint for listing upcoming movies.
         /// </summary>
         public const string LIST_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/upcoming.json?apikey=" + API_KEY;
+
+        /// <summary>
+        /// Endpoint for DVD top rentals
+        /// </summary>
+        public const string TOP_DVD_RENTALS = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=" + API_KEY;
+
+        /// <summary>
+        /// Endpoint for DVD current releases
+        /// </summary>
+        public const string DVD_CURRENT_RELEASES = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/current_releases.json?apikey=" + API_KEY;
+    
+        /// <summary>
+        /// Endpoint for DVD new releases
+        /// </summary>
+        public const string DVD_NEW_RELEASES = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/new_releases.json?apikey=" + API_KEY;
+    
+        /// <summary>
+        /// Endpoint for DVD upcoming
+        /// </summary>
+        public const string DVD_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/upcoming.json?apikey=" + API_KEY;       
     }
 }
