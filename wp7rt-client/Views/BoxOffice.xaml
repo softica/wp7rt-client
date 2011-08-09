@@ -34,7 +34,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Background="YellowGreen" Width="400" Margin="10">
 
-                            <TextBlock Text="{Binding title}" FontSize="40" Foreground="Black" Width="280" />
+                            <TextBlock Text="{Binding Title}" FontSize="40" Foreground="Black" Width="280" />
 
 
                         </StackPanel>

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using wp7rt_client.Classes;
 
 namespace wp7rt_client.Views
 {
@@ -22,7 +23,34 @@ namespace wp7rt_client.Views
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);            
+            base.OnNavigatedTo(e);
+            if (listBoxOffice.Items.Count == 0)
+            {
+                
+                Uri boxOfficeUri = new Uri(APIEndpoints.LIST_BOX_OFFICE, UriKind.Absolute);
+                
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(boxOfficeUri);
+
+            }            
+        }
+                  
+        void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            string jsonResponse = e.Result.ToString();
+            var movies = Parser.ParseMovieSearchResults(jsonResponse);
+
+            List<Movie> list = new List<Movie>();
+
+            foreach (var movie in movies)
+            {
+                list.Add(movie);
+                System.Diagnostics.Debug.WriteLine(movie.Title);
+            }
+
+            listBoxOffice.ItemsSource = list;
+            System.Diagnostics.Debug.WriteLine("End of debug!");
         }
 
         private void listBoxOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
