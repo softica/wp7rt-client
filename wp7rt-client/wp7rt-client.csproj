@@ -63,6 +63,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Movie.cs" />
+    <Compile Include="Classes\MovieSearchResults.cs" />
+    <Compile Include="Classes\Parser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

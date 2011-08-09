@@ -20,5 +20,10 @@ namespace wp7rt_client
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
