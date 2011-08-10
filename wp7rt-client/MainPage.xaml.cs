@@ -43,6 +43,26 @@ namespace wp7rt_client
             NavigationService.Navigate(new Uri("/MoviesList/Upcoming/", UriKind.Relative));
         }
 
+        private void DVDTop_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/DVDTop/", UriKind.Relative));
+        }
+
+        private void DVDCurrentReleases_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/DVDCurrentReleases/", UriKind.Relative));
+        }
+
+        private void DVDNewReleases_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/DVDNewReleases/", UriKind.Relative));
+        }
+
+        private void DVDUpcoming_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MoviesList/DVDUpcoming/", UriKind.Relative));
+        }
+
         //Other stuff
 
         private void QueryText_GotFocus(object sender, RoutedEventArgs e)

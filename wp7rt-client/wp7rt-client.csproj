@@ -108,6 +108,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\mainViewIcon.jpg" />
+    <Resource Include="Images\movie_w_b.jpg" />
+    <Resource Include="Images\movie_y_b.jpg" />
+    <Resource Include="Images\rotten_tomatoes_logo.jpg" />
+    <Resource Include="Images\rotten-logo.png" />
+    <Resource Include="Images\rotten-tomatoes-mini.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

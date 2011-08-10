@@ -16,20 +16,28 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="77"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0">
-            <TextBlock x:Name="PageTitle" Text="" Style="{StaticResource PhoneTextTitle1Style}" FontSize="48" Width="457" TextAlignment="Center" />
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="-0.176,0,0.176,0" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="77" VerticalAlignment="Top">
+        	<StackPanel.RenderTransform>
+        		<CompositeTransform Rotation="-0.164"/>
+        	</StackPanel.RenderTransform>
+        	<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+
+            <Grid Height="45" Margin="8,18,8,0" VerticalAlignment="Top">
+        		<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426"/>
+        		<TextBlock x:Name="PageTitle" Text="Test" Style="{StaticResource PhoneTextTitle1Style}" FontSize="37.333" TextAlignment="Center" Margin="-11,0,0,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" VerticalAlignment="Top" />
+        	</Grid>
 
             <ListBox x:Name="moviesList" 
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="moviesList_SelectionChanged">
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="moviesList_SelectionChanged" Margin="40,260,49,18">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Background="YellowGreen" Width="400" Margin="10">

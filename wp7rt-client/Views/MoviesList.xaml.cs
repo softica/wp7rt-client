@@ -35,6 +35,7 @@ namespace wp7rt_client.Views
             System.Diagnostics.Debug.WriteLine(query);
             System.Diagnostics.Debug.WriteLine(type);
 
+            // Movies
             if (type == "Theaters")
             {
                 ListMoviesInTheatres();
@@ -54,6 +55,23 @@ namespace wp7rt_client.Views
             else if (type == "Upcoming")
             {
                 ListMoviesUpcoming();
+            } 
+            //DVD
+            else if (type == "DVDTop")
+            {
+                ListMoviesDVDTop();
+            }
+            else if (type == "DVDCurrentReleases")
+            {
+                ListMoviesDVDCurrentReleases();
+            }
+            else if (type == "DVDNewReleases")
+            {
+                ListMoviesDVDNewReleases();
+            }
+            else if (type == "DVDUpcoming")
+            {
+                ListMoviesDVDUpcoming();
             }
         }
 
@@ -130,6 +148,70 @@ namespace wp7rt_client.Views
             {
 
                 Uri uri = new Uri(APIEndpoints.LIST_UPCOMING, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+            }
+        }
+
+        private void ListMoviesDVDNewReleases()
+        {
+            PageTitle.Text = "DVD New Releases";
+
+            if (moviesList.Items.Count == 0)
+            {
+
+                Uri uri = new Uri(APIEndpoints.DVD_NEW_RELEASES, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+            }
+        }
+
+        private void ListMoviesDVDCurrentReleases()
+        {
+            PageTitle.Text = "DVD Current Releases";
+
+            if (moviesList.Items.Count == 0)
+            {
+
+                Uri uri = new Uri(APIEndpoints.DVD_CURRENT_RELEASES, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+            }
+        }
+
+        private void ListMoviesDVDTop()
+        {
+            PageTitle.Text = "DVD Top Rentals";
+
+            if (moviesList.Items.Count == 0)
+            {
+
+                Uri uri = new Uri(APIEndpoints.TOP_DVD_RENTALS, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+            }
+        }
+
+        private void ListMoviesDVDUpcoming()
+        {
+            PageTitle.Text = "DVD Upcoming";
+
+            if (moviesList.Items.Count == 0)
+            {
+
+                Uri uri = new Uri(APIEndpoints.DVD_UPCOMING, UriKind.Absolute);
 
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
