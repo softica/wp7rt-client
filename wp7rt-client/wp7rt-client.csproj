@@ -66,6 +66,7 @@
     <Compile Include="Classes\APIEndpoints.cs" />
     <Compile Include="Classes\Movie.cs" />
     <Compile Include="Classes\MovieSearchResults.cs" />
+    <Compile Include="Classes\MoviesListElement.cs" />
     <Compile Include="Classes\Parser.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -107,12 +108,11 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\mainViewIcon.jpg" />
-    <Resource Include="Images\movie_w_b.jpg" />
-    <Resource Include="Images\movie_y_b.jpg" />
-    <Resource Include="Images\rotten_tomatoes_logo.jpg" />
     <Resource Include="Images\rotten-logo.png" />
-    <Resource Include="Images\rotten-tomatoes-mini.png" />
+    <Resource Include="Images\fresh.png" />
+    <Resource Include="Images\CertifiedFresh_logo.png" />
+    <Resource Include="Images\rotten_logo.png" />
+    <Resource Include="Images\movie.jpg" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

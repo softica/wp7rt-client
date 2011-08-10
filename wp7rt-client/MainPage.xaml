@@ -43,16 +43,16 @@
             	<Grid Height="188" VerticalAlignment="Top">
             		<Grid Height="44" VerticalAlignment="Top">
             			<Rectangle Fill="#FF000002" Stroke="Black" Height="10" VerticalAlignment="Top"/>
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             			<TextBlock Margin="44,5,0,5" TextWrapping="Wrap" Text="Box Office" FontFamily="Tahoma" FontSize="29.333" Foreground="White" MouseLeftButtonDown="BoxOffice_MouseLeftButtonDown"/>
             		</Grid>
             		<Grid Height="44" Margin="0,47,0,0" VerticalAlignment="Top">
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             			<TextBlock Margin="44,5,0,5" TextWrapping="Wrap" Text="In Theaters" FontFamily="Tahoma" FontSize="29.333" Foreground="White" MouseLeftButtonDown="Theatres_MouseLeftButtonDown"/>
             		</Grid>
             		<Grid Margin="0,93,0,51">
             			<TextBlock Margin="45,4,0,4" TextWrapping="Wrap" Text="Openings" FontSize="29.333" FontFamily="Tahoma" Foreground="White" MouseLeftButtonDown="Openings_MouseLeftButtonDown"/>
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             		</Grid>
             		<Grid Height="44" VerticalAlignment="Bottom">
             			<Grid.ColumnDefinitions>
@@ -60,7 +60,7 @@
             				<ColumnDefinition Width="10"/>
             				<ColumnDefinition Width="0.723*"/>
             			</Grid.ColumnDefinitions>
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             			<TextBlock Margin="45,5,0,5" TextWrapping="Wrap" Text="Upcoming" FontSize="29.333" FontFamily="Tahoma" Foreground="White" MouseLeftButtonDown="Upcoming_MouseLeftButtonDown" Grid.ColumnSpan="3"/>
             		</Grid>
             	</Grid>
@@ -68,19 +68,19 @@
             	<Grid Margin="0,0,0,4" Height="188" VerticalAlignment="Bottom">
             		<Grid Height="44" VerticalAlignment="Top">
             			<Rectangle Fill="#FF000002" Stroke="Black" Height="10" VerticalAlignment="Top"/>
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
                         <TextBlock Margin="44,5,0,5" TextWrapping="Wrap" Text="Top Rentals" FontFamily="Tahoma" FontSize="29.333" Foreground="White" MouseLeftButtonDown="DVDTop_MouseLeftButtonDown"/>
             		</Grid>
             		<Grid Height="44" Margin="0,47,0,0" VerticalAlignment="Top">
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
                         <TextBlock Margin="44,5,0,5" TextWrapping="Wrap" Text="Current Releases" FontFamily="Tahoma" FontSize="29.333" Foreground="White" MouseLeftButtonDown="DVDCurrentReleases_MouseLeftButtonDown"/>
             		</Grid>
             		<Grid Margin="0,93,0,51">
                         <TextBlock Margin="45,4,0,4" TextWrapping="Wrap" Text="New Releases" FontSize="29.333" FontFamily="Tahoma" Foreground="White" MouseLeftButtonDown="DVDNewReleases_MouseLeftButtonDown"/>
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             		</Grid>
             		<Grid Height="44" VerticalAlignment="Bottom">            		
-            			<Image Source="Images/rotten-tomatoes-mini.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            			<Image Source="Images/fresh.png" Width="29" HorizontalAlignment="Left" Margin="7,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             			<TextBlock Margin="45,5,0,5" TextWrapping="Wrap" Text="Upcoming" FontSize="29.333" FontFamily="Tahoma" Foreground="White" MouseLeftButtonDown="DVDUpcoming_MouseLeftButtonDown" Grid.ColumnSpan="3"/>
             		</Grid>
             	</Grid>
