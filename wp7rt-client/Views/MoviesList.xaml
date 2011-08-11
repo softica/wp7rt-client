@@ -47,8 +47,8 @@
                         <Grid Height="78" VerticalAlignment="Top">
                             <Image Source="{Binding ImageSourcePath}" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
                             <TextBlock Margin="44,5,0,0" TextWrapping="Wrap" Text="{Binding Title}" FontFamily="Tahoma" FontSize="29.333" Foreground="White" Height="34" VerticalAlignment="Top"/>
-                            <TextBlock Margin="44,0,0,2" TextWrapping="Wrap" Text="{Binding RatingCritics}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>
-                            <TextBlock Margin="244,0,0,2" TextWrapping="Wrap" Text="{Binding RatingAudience}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>                            
+                            <TextBlock Margin="44,0,0,2" TextWrapping="Wrap" Text="{Binding CriticsRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>
+                            <TextBlock Margin="244,0,0,2" TextWrapping="Wrap" Text="{Binding AudienceRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>                            
                         </Grid>
                    
                     </DataTemplate>

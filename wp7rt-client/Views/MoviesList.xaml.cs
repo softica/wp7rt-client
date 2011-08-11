@@ -226,62 +226,11 @@ namespace wp7rt_client.Views
             string jsonResponse = e.Result.ToString();
             var movies = Parser.ParseMovieSearchResults(jsonResponse);
 
-            List<MoviesListElement> list = new List<MoviesListElement>();
-            
+            List<Movie> list = new List<Movie>();
+
             foreach (var movie in movies)
             {
-                MoviesListElement element = new MoviesListElement();
-                element.Title = movie.Title;
-
-                bool certiiedFreshSet = false;
-
-                foreach (var elem in movie.Ratings)
-                {
-                    if (elem.Type == "critics_score")
-                    {
-                        if (elem.Score != "-1")
-                        {
-                            element.RatingCritics = "Critics: " + elem.Score + "%";
-                        }                        
-                    }
-                    else if (elem.Type == "audience_score")
-                    {
-                        if (elem.Score != "-1")
-                        {
-                            element.RatingAudience = "Audience: " + elem.Score + "%";
-                        }                        
-                    }
-
-                    System.Diagnostics.Debug.WriteLine(elem.Type);
-                    System.Diagnostics.Debug.WriteLine(elem.Score);
-
-                    if (elem.Type == "critics_rating" && elem.Score == "\"Certified Fresh\"")
-                    {
-                        System.Diagnostics.Debug.WriteLine(elem.Type);
-                        System.Diagnostics.Debug.WriteLine(elem.Score);
-                        element.ImageSourcePath = "/wp7rt-client;component/Images/CertifiedFresh_logo.png";
-                        certiiedFreshSet = true;
-                    }
-                    else if (elem.Type == "critics_score" && !certiiedFreshSet)
-                    {
-                        int score;
-                        bool result = Int32.TryParse(elem.Score, out score);
-                        if (result)
-                        {
-                            if (score < 60 && score != -1)
-                            {
-                                element.ImageSourcePath = "/wp7rt-client;component/Images/rotten_logo.png";
-                            }
-                            else if (score >= 60)
-                            {
-                                element.ImageSourcePath = "/wp7rt-client;component/Images/fresh.png";
-                            }                            
-                        }
-
-                    }
- 
-                }
-                list.Add(element);
+                list.Add(movie);
             }
 
             moviesList.ItemsSource = list;

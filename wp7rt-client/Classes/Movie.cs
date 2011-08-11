@@ -20,6 +20,10 @@ namespace wp7rt_client.Classes
         public List<Link> Links { get; set; }
         public List<Poster> Posters { get; set; }
 
+        public string AudienceRating { get { return ConvertAudienceRatings(); }  }
+        public string CriticsRating { get { return ConvertCriticsRatings(); } }
+        public string ImageSourcePath { get { return ConvertImageSourcePath(); } }
+
         public Movie()
         {
             Directors = new List<string>();
@@ -30,6 +34,90 @@ namespace wp7rt_client.Classes
             ReleaseDates = new List<ReleaseDate>();
             Ratings = new List<Rating>();
         }
+
+        #region LayoutAccessors
+
+        public string ConvertAudienceRatings() 
+        {
+            string s;
+            s = "Audience: no rating.";
+
+            foreach (var elem in Ratings)
+                {
+                    if (elem.Type == "audience_score")
+                    {
+                        if (elem.Score != "-1")
+                        {
+                            s = "Audience: " + elem.Score + "%";
+                        }                    
+                    }
+                }
+
+            return s;
+
+        }
+
+        public string ConvertCriticsRatings()
+        {
+            string s;
+            s = "Critics: no rating.";
+
+            foreach (var elem in Ratings)
+            {
+                if (elem.Type == "critics_score" && elem.Score != "\"Certified Fresh\"")
+                {
+                    if (elem.Score != "-1")
+                    {
+                        s = "Critics: " + elem.Score + "%";
+                    }
+                }
+            }
+
+            return s;
+
+        }
+
+        public string ConvertImageSourcePath()
+        {
+            string path = "/wp7rt-client;component/Images/movie.jpg";
+
+            bool certiiedFreshSet = false;
+
+            foreach (var elem in Ratings)
+            {
+
+                if (elem.Type == "critics_rating" && elem.Score == "\"Certified Fresh\"")
+                {
+                    System.Diagnostics.Debug.WriteLine(elem.Type);
+                    System.Diagnostics.Debug.WriteLine(elem.Score);
+                    path = "/wp7rt-client;component/Images/CertifiedFresh_logo.png";
+                    certiiedFreshSet = true;
+                }
+                else if (elem.Type == "critics_score" && !certiiedFreshSet)
+                {
+                    int score;
+                    bool result = Int32.TryParse(elem.Score, out score);
+                    if (result)
+                    {
+                        if (score < 60 && score != -1)
+                        {
+                            path = "/wp7rt-client;component/Images/rotten_logo.png";
+                        }
+                        else if (score >= 60)
+                        {
+                            path = "/wp7rt-client;component/Images/fresh.png";
+                        }
+                    }
+
+                }
+
+            }
+
+            return path;
+
+        }
+
+        #endregion
 
         #region IComparable Members
 
