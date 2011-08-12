@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
+using System.Windows.Media.Imaging;
 
 namespace wp7rt_client.Views
 {
@@ -20,6 +21,8 @@ namespace wp7rt_client.Views
         public MovieDetailedView()
         {
             InitializeComponent();
+
+            
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -27,14 +30,55 @@ namespace wp7rt_client.Views
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
 
-            Title.Text = movie.Title;
-            Year.Text = movie.Year.ToString();
-            Runtime.Text = movie.Runtime.ToString();
-            Synopsis.Text = movie.Synopsis;
+            var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_INFORMATION, movie.RottenTomatoesId);
+            Uri uri = new Uri(url, UriKind.Absolute);
 
-            System.Diagnostics.Debug.WriteLine(movie.Title);
-            System.Diagnostics.Debug.WriteLine("End of debug!");                     
+            WebClient client = new WebClient();
+            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+            client.DownloadStringAsync(uri);
 
+            //System.Diagnostics.Debug.WriteLine(movie.Genres);
+            //System.Diagnostics.Debug.WriteLine(movie.Cast);
+
+        }
+
+        private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            string jsonResponse = e.Result.ToString();
+            Movie movie = Parser.ParseMovie(jsonResponse);
+
+            
+
+                PageTitle.Text = movie.Title;
+                AudiencePerCent.Text = movie.AudienceRatingPerCent;
+                CriticsPerCent.Text = movie.CriticsRatingPerCent;
+                Cast.Text = "Cast: " + movie.CastMembers;
+                Directors.Text = movie.MovieDirectors;
+                Synopsis.Text = movie.Synopsis;
+                Genres.Text = movie.MovieGenres;
+                DVD.Text = movie.DVDReleaseDate;
+                InTheaters.Text = movie.TheatersReleaseDate;
+                Year.Text = "Year: " + movie.Year.ToString();
+                MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
+                Runtime.Text = "Runtime: " + movie.Runtime.ToString();
+
+                Uri u;
+                u = new Uri(movie.ImageSourcePath, UriKind.Relative);
+                
+                RatingImage.Source = new BitmapImage(u);
+
+                u = new Uri(movie.SmallPoster, UriKind.Absolute);
+                poster.Source = new BitmapImage(u);
+            
+
+      
+
+        }      
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //pass
         }
 
 

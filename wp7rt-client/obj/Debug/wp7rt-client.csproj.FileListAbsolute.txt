@@ -34,3 +34,5 @@ C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\wp7rt-client.g
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\wp7rt-client.dll
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\wp7rt-client.pdb
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\XapCacheFile.xml
+C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Bin\Debug\Phone.Controls.dll
+C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Bin\Debug\Phone.Controls.pdb

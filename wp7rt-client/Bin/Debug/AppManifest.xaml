@@ -2,5 +2,6 @@
   <Deployment.Parts>
     <AssemblyPart x:Name="wp7rt-client" Source="wp7rt-client.dll" />
     <AssemblyPart x:Name="Newtonsoft.Json.WindowsPhone" Source="Newtonsoft.Json.WindowsPhone.dll" />
+    <AssemblyPart x:Name="Phone.Controls" Source="Phone.Controls.dll" />
   </Deployment.Parts>
 </Deployment>

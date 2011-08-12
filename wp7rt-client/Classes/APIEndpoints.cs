@@ -39,7 +39,7 @@ namespace wp7rt_client.Classes
         /// <summary>
         /// Endpoint for searching for an individual movie via it's RottenTomatoes ID number.
         /// </summary>
-        public const string MOVIE_INDIVIDUAL_INFORMATION = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{1}.json?apikey={0}";
+        public const string MOVIE_INDIVIDUAL_INFORMATION = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{0}.json?apikey=" + API_KEY;
 
         /// <summary>
         /// Endpoint for searching for reviews for an individual movie.

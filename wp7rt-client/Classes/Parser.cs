@@ -19,7 +19,7 @@ namespace wp7rt_client.Classes
         {
             JObject jObject = JObject.Parse(json);
             Movie movie = new Movie();
-
+                        
             movie.RottenTomatoesId = ParseRottenTomatoesId(jObject["id"]);
             movie.Title = ParseTitle(jObject["title"]);
             movie.Year = ParseYear(jObject["year"]);

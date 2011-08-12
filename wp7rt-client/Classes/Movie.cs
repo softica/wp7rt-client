@@ -20,9 +20,17 @@ namespace wp7rt_client.Classes
         public List<Link> Links { get; set; }
         public List<Poster> Posters { get; set; }
 
-        public string AudienceRating { get { return ConvertAudienceRatings(); }  }
-        public string CriticsRating { get { return ConvertCriticsRatings(); } }
+        public string AudienceRating { get { return ConvertAudienceRatings("Audience: no rating.","Audience: "); }  }
+        public string CriticsRating { get { return ConvertCriticsRatings("Critics: no rating.", "Critics: "); } }
         public string ImageSourcePath { get { return ConvertImageSourcePath(); } }
+        public string AudienceRatingPerCent { get { return ConvertAudienceRatings("NA",""); } }
+        public string CriticsRatingPerCent { get { return ConvertCriticsRatings("NA", ""); } }
+        public string CastMembers { get { return ConvertCastMembers(); } }
+        public string MovieDirectors { get { return ConvertDirectorsMembers(); } }
+        public string MovieGenres { get { return ConvertMovieGenres(); } }
+        public string TheatersReleaseDate { get { return ConvertTheaterReleaseDate(); } }
+        public string DVDReleaseDate { get { return ConvertDVDReleaseDate(); } }
+        public string SmallPoster { get { return ConvertPoster(); } }
 
         public Movie()
         {
@@ -37,10 +45,10 @@ namespace wp7rt_client.Classes
 
         #region LayoutAccessors
 
-        public string ConvertAudienceRatings() 
+        public string ConvertAudienceRatings(string defaultstring, string nondefault) 
         {
             string s;
-            s = "Audience: no rating.";
+            s = defaultstring;
 
             foreach (var elem in Ratings)
                 {
@@ -48,7 +56,7 @@ namespace wp7rt_client.Classes
                     {
                         if (elem.Score != "-1")
                         {
-                            s = "Audience: " + elem.Score + "%";
+                            s = nondefault + elem.Score + "%";
                         }                    
                     }
                 }
@@ -57,10 +65,47 @@ namespace wp7rt_client.Classes
 
         }
 
-        public string ConvertCriticsRatings()
+        public string ConvertCastMembers()
+        {
+            string r = "";
+            foreach (var member in Cast)
+            {
+                r = r + member.Name + ", ";
+            }
+            r = r.Remove(r.Length - 2);
+            return r;
+        }
+
+        public string ConvertDirectorsMembers()
+        {
+            string r = "Directed by: ";
+            foreach (var member in Directors)
+            {
+                System.Diagnostics.Debug.WriteLine(member);
+                r = r + member + ", ";
+            }
+            r = r.Remove(r.Length - 2);
+            return r;
+        }
+
+        public string ConvertMovieGenres()
+        {
+            System.Diagnostics.Debug.WriteLine("Genres");
+            System.Diagnostics.Debug.WriteLine(Genres);
+            string r = "";
+            foreach (var member in Genres)
+            {
+                System.Diagnostics.Debug.WriteLine(member);
+                r = r + member + ", ";
+            }
+            r = r.Remove(r.Length - 2);
+            return r;
+        }
+
+        public string ConvertCriticsRatings(string defaultstring, string nondefault)
         {
             string s;
-            s = "Critics: no rating.";
+            s = defaultstring;
 
             foreach (var elem in Ratings)
             {
@@ -68,7 +113,7 @@ namespace wp7rt_client.Classes
                 {
                     if (elem.Score != "-1")
                     {
-                        s = "Critics: " + elem.Score + "%";
+                        s = nondefault + elem.Score + "%";
                     }
                 }
             }
@@ -115,6 +160,51 @@ namespace wp7rt_client.Classes
 
             return path;
 
+        }
+
+        public string ConvertTheaterReleaseDate()
+        {
+            string s="";
+            
+            foreach (var elem in ReleaseDates)
+            {
+                if (elem.Type == "theater")
+                {
+                    s = "In theaters: " + elem.Date;
+                }
+            }
+
+            return s;
+        }
+
+        public string ConvertDVDReleaseDate()
+        {
+            string s="";
+
+            foreach (var elem in ReleaseDates)
+            {
+                if (elem.Type == "dvd")
+                {
+                    s = "DVD: " + elem.Date;
+                }
+            }
+
+            return s;
+        }
+
+        public string ConvertPoster()
+        {
+            string s = "";
+
+            foreach (var elem in Posters)
+            {
+                if (elem.Type == "profile")
+                {
+                    s = elem.Url;
+                }
+            }
+
+            return s;
         }
 
         #endregion

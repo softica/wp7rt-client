@@ -30,10 +30,7 @@ namespace wp7rt_client.Views
             NavigationContext.QueryString.TryGetValue("Query", out query);
 
             string type;
-            NavigationContext.QueryString.TryGetValue("Type", out type);
-            
-            System.Diagnostics.Debug.WriteLine(query);
-            System.Diagnostics.Debug.WriteLine(type);
+            NavigationContext.QueryString.TryGetValue("Type", out type);          
 
             // Movies
             if (type == "Theaters")
