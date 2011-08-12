@@ -72,14 +72,13 @@ namespace wp7rt_client.Views
                 poster.Source = new BitmapImage(u);
 
                 directLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
-      
 
         }      
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/MoviesList/Similar/770672122", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/MoviesList/Similar/" + "111111", UriKind.Relative));
         }
 
         private void hyperlinkButton1_Click(object sender, RoutedEventArgs e)
