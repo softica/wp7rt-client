@@ -30,7 +30,7 @@
                 <Grid x:Name="ContentPanel" Margin="12,77,12,0" d:LayoutOverrides="GridBox">
                     <my:ScrollableTextBlock  Text=""           
                 HorizontalAlignment="Left"  Name="Synopsis" 
-                  VerticalAlignment="Top" Height="240" Width="456" Margin="0,283,0,0" FontFamily="Tahoma" />
+                  VerticalAlignment="Top" Height="285" Width="456" Margin="0,289,0,0" FontFamily="Tahoma" />
                     <Grid Height="45" Margin="8,18,-16,0" VerticalAlignment="Top">
                     	<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
                     	<TextBlock x:Name="PageTitle" Text="Test" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
@@ -52,10 +52,10 @@
                     <TextBlock Height="20" Margin="184,83,214,0" TextWrapping="Wrap" Text="Critics" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18"/>
                     <TextBlock Height="20" Margin="0,83,90,0" TextWrapping="Wrap" Text="Audience" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="66"/>
                     <Grid Margin="0,217,8,0" Height="66" VerticalAlignment="Top">
-                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="16" Height="20" VerticalAlignment="Top"/>
-                    	<TextBlock TextWrapping="Wrap" Name="Cast" Text="" FontFamily="Tahoma" FontSize="16" Margin="0,20,0,0"/>
-                    </Grid>
-                    <TextBlock TextWrapping="Wrap" Text="rottentomatoes.com links" FontFamily="Tahoma" FontSize="18" Margin="0,0,8,36" Height="74" VerticalAlignment="Bottom" Foreground="#FF001BF9"/>
+                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="16" Height="20" VerticalAlignment="Top" Margin="0,2,0,0" />
+                    	<TextBlock TextWrapping="Wrap" Name="Cast" Text="" FontFamily="Tahoma" FontSize="16" Margin="0,20,0,0"/>                        
+                </Grid>
+                <HyperlinkButton Content="rottentomatoes.com direct link" Height="30" HorizontalAlignment="Left" Margin="59,574,0,0" Name="directLink" VerticalAlignment="Top" Width="340" Click="hyperlinkButton1_Click" />
             </Grid>
             </Grid>
 		<Button Content="Find Similar Movies" Margin="55,0" VerticalAlignment="Bottom" Click="Button_Click" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" />

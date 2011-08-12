@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
+using Microsoft.Phone.Tasks;
 
 namespace wp7rt_client.Views
 {
@@ -69,8 +70,8 @@ namespace wp7rt_client.Views
 
                 u = new Uri(movie.SmallPoster, UriKind.Absolute);
                 poster.Source = new BitmapImage(u);
-            
 
+                directLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
       
 
         }      
@@ -78,7 +79,14 @@ namespace wp7rt_client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //pass
+            NavigationService.Navigate(new Uri("/MoviesList/Similar/770672122", UriKind.Relative));
+        }
+
+        private void hyperlinkButton1_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            task.URL = directLink.NavigateUri.ToString();
+            task.Show();
         }
 
 

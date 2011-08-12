@@ -89,6 +89,11 @@ namespace wp7rt_client.Classes
         /// <summary>
         /// Endpoint for DVD upcoming
         /// </summary>
-        public const string DVD_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/upcoming.json?apikey=" + API_KEY;       
+        public const string DVD_UPCOMING = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/upcoming.json?apikey=" + API_KEY;
+
+        /// <summary>
+        /// Endpoint for DVD upcoming
+        /// </summary>
+        public const string SIMILAR = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{0}/similar.json?apikey=" + API_KEY;  
     }
 }

@@ -70,6 +70,10 @@ namespace wp7rt_client.Views
             {
                 ListMoviesDVDUpcoming();
             }
+            else if (type == "Similar")
+            {
+                ListMoviesSimilar(query);
+            }
         }
 
         private void ListMoviesInTheatres()
@@ -217,6 +221,22 @@ namespace wp7rt_client.Views
             }
         }
 
+        private void ListMoviesSimilar(string query)
+        {
+            PageTitle.Text = "Similar Movies";
+
+            if (moviesList.Items.Count == 0)
+            {
+
+                var url = String.Format(APIEndpoints.SIMILAR, query, APIEndpoints.PAGE_LIMIT);
+                Uri uri = new Uri(url, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+            }
+        }
 
         private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
         {

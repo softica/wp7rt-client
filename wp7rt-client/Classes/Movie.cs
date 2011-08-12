@@ -31,6 +31,7 @@ namespace wp7rt_client.Classes
         public string TheatersReleaseDate { get { return ConvertTheaterReleaseDate(); } }
         public string DVDReleaseDate { get { return ConvertDVDReleaseDate(); } }
         public string SmallPoster { get { return ConvertPoster(); } }
+        public string rtDirectLink { get { return ConvertDirectLink(); } }
 
         public Movie()
         {
@@ -199,6 +200,21 @@ namespace wp7rt_client.Classes
             foreach (var elem in Posters)
             {
                 if (elem.Type == "profile")
+                {
+                    s = elem.Url;
+                }
+            }
+
+            return s;
+        }
+
+        public string ConvertDirectLink()
+        {
+            string s = "";
+
+            foreach (var elem in Links)
+            {
+                if (elem.Type == "alternate")
                 {
                     s = elem.Url;
                 }
