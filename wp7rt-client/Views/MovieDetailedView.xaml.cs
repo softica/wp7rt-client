@@ -55,13 +55,14 @@ namespace wp7rt_client.Views
                 CriticsPerCent.Text = movie.CriticsRatingPerCent;
                 Cast.Text = "Cast: " + movie.CastMembers;
                 Directors.Text = movie.MovieDirectors;
-                Synopsis.Text = movie.Synopsis;
+                //Synopsis.Text = movie.Synopsis;
                 Genres.Text = movie.MovieGenres;
                 DVD.Text = movie.DVDReleaseDate;
                 InTheaters.Text = movie.TheatersReleaseDate;
                 Year.Text = "Year: " + movie.Year.ToString();
                 MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
                 Runtime.Text = "Runtime: " + movie.Runtime.ToString();
+                Consensus.Text = movie.CriticsConsensus;
 
                 Uri u;
                 u = new Uri(movie.ImageSourcePath, UriKind.Relative);
@@ -71,21 +72,40 @@ namespace wp7rt_client.Views
                 u = new Uri(movie.SmallPoster, UriKind.Absolute);
                 poster.Source = new BitmapImage(u);
 
-                directLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
+                //DirectLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
+
+                PhoneApplicationService.Current.State["RottenTomatoesId"] = movie.RottenTomatoesId;
+                PhoneApplicationService.Current.State["rtDirectLink"] = movie.rtDirectLink;
+                PhoneApplicationService.Current.State["Movie"] = movie;
 
         }      
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/MoviesList/Similar/" + "111111", UriKind.Relative));
+            if (PhoneApplicationService.Current.State.ContainsKey("RottenTomatoesId"))
+            {
+                int movieID = (int)PhoneApplicationService.Current.State["RottenTomatoesId"];
+                NavigationService.Navigate(new Uri("/MoviesList/Similar/" + movieID.ToString(), UriKind.Relative));
+            }
+            
         }
 
-        private void hyperlinkButton1_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click_Direct_Link(object sender, RoutedEventArgs e)
         {
-            WebBrowserTask task = new WebBrowserTask();
-            task.URL = directLink.NavigateUri.ToString();
-            task.Show();
+            if (PhoneApplicationService.Current.State.ContainsKey("rtDirectLink"))
+            {
+                string rtDirectLink = (string)PhoneApplicationService.Current.State["rtDirectLink"];
+                WebBrowserTask task = new WebBrowserTask();
+                task.URL = rtDirectLink;
+                task.Show();
+            }
+        }
+
+        private void Button_Click_Movie_Desc(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MovieDescription/", UriKind.Relative));
         }
 
 

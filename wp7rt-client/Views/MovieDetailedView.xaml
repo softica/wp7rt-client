@@ -28,37 +28,41 @@
 
             
                 <Grid x:Name="ContentPanel" Margin="12,77,12,0" d:LayoutOverrides="GridBox">
-                    <my:ScrollableTextBlock  Text=""           
-                HorizontalAlignment="Left"  Name="Synopsis" 
-                  VerticalAlignment="Top" Height="285" Width="456" Margin="0,289,0,0" FontFamily="Tahoma" />
                     <Grid Height="45" Margin="8,18,-16,0" VerticalAlignment="Top">
                     	<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
                     	<TextBlock x:Name="PageTitle" Text="Test" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
                     </Grid>
-                    <Grid Height="150" Margin="8,67,0,0" VerticalAlignment="Top">
-                    	<Grid HorizontalAlignment="Left" Width="126" Margin="0,0,0,6">
-                        <Image Height="150" HorizontalAlignment="Left" Name="poster" Stretch="Fill" VerticalAlignment="Top" Width="132" />
+                    <Grid Height="164" Margin="8,67,0,0" VerticalAlignment="Top">
+                    	<Grid HorizontalAlignment="Left" Width="126">
+                        <Image Height="156" HorizontalAlignment="Left" Name="poster" Stretch="Fill" VerticalAlignment="Top" Width="126" Margin="0,8,0,0" />
                     </Grid>
-                    <TextBlock Height="20" Margin="136,0,154,0" TextWrapping="Wrap" Name="Runtime" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18"/>
-                    	<TextBlock Height="20" TextWrapping="Wrap" Name="MPAA" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="158"/>
+                    <TextBlock Height="20" Margin="136,0,188,0" TextWrapping="Wrap" Name="Runtime" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" Width="124" />
+                    	<TextBlock Height="20" TextWrapping="Wrap" Name="MPAA" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="182"/>
                     	<TextBlock Height="20" Margin="136,0,154,20" TextWrapping="Wrap" Name="Year" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18"/>
                     	<TextBlock Height="20" Margin="0,0,0,20" TextWrapping="Wrap" Text="" Name="DVD" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="158"/>
                     	<TextBlock Margin="136,0,122,40" TextWrapping="Wrap" Text="" Name="InTheaters" FontFamily="Tahoma" FontSize="18" Height="20" VerticalAlignment="Bottom"/>
                     	<TextBlock Margin="136,50,0,60" TextWrapping="Wrap" Name="Genres" Text="" FontFamily="Tahoma" FontSize="18"/>
-                    	<TextBlock Margin="223,8,154,0" TextWrapping="Wrap" Name="AudiencePerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top"/>
-                    	<TextBlock Margin="0,8,17,0" TextWrapping="Wrap" Name ="CriticsPerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" HorizontalAlignment="Right" Width="71"/>
-                    	<Image Margin="132,0,0,0" Name="RatingImage" Source="/wp7rt-client;component/Images/fresh.png" Stretch="Fill" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="39"/>
+                    	<TextBlock Margin="0,6,154,0" TextWrapping="Wrap" Name="AudiencePerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" Width="57" HorizontalAlignment="Right" />
+                    	<TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Name ="CriticsPerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" HorizontalAlignment="Right" Width="71"/>
+                    	<Image Margin="136,0,0,0" Name="RatingImage" Source="/wp7rt-client;component/Images/fresh.png" Stretch="Fill" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="42"/>
+                    	<TextBlock Height="20" Margin="182,13,209,0" TextWrapping="Wrap" Text="Critics" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18"/>
+                    	<TextBlock Height="20" Margin="0,13,71,0" TextWrapping="Wrap" Text="Audience" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="79"/>
                     </Grid>
-                    <TextBlock Height="20" Margin="184,83,214,0" TextWrapping="Wrap" Text="Critics" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18"/>
-                    <TextBlock Height="20" Margin="0,83,90,0" TextWrapping="Wrap" Text="Audience" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="66"/>
-                    <Grid Margin="0,217,8,0" Height="66" VerticalAlignment="Top">
-                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="16" Height="20" VerticalAlignment="Top" Margin="0,2,0,0" />
-                    	<TextBlock TextWrapping="Wrap" Name="Cast" Text="" FontFamily="Tahoma" FontSize="16" Margin="0,20,0,0"/>                        
+                    <Grid Margin="0,231,0,169">
+                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="18.667" Height="22" VerticalAlignment="Top" />
+                    	<TextBlock TextWrapping="Wrap" Name="Cast" Text="" FontFamily="Tahoma" FontSize="18.667" Margin="0,20,0,0" Height="46" VerticalAlignment="Top"/>
+                    	<my:ScrollableTextBlock  Text=""           
+                    		HorizontalAlignment="Left"  x:Name="Consensus" 
+                    		VerticalAlignment="Top" Height="156" Width="456" Margin="0,91,0,0" FontFamily="Trebuchet MS" FontSize="21.333" Foreground="White" FontWeight="Bold" />
+                    	<TextBlock Margin="143,66,143,0" TextWrapping="Wrap" Text="Critics Consensus" Height="25" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Trebuchet MS" d:LayoutOverrides="Width"/>                        
                 </Grid>
-                <HyperlinkButton Content="rottentomatoes.com direct link" Height="30" HorizontalAlignment="Left" Margin="59,574,0,0" Name="directLink" VerticalAlignment="Top" Width="340" Click="hyperlinkButton1_Click" />
             </Grid>
+                <Grid Height="208" Margin="12,0,4,-33" VerticalAlignment="Bottom">
+                	<Button Content="Find Similar Movies" Margin="47,0,47,-9" VerticalAlignment="Bottom" Click="Button_Click" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" />
+                	<Button Content="Direct rottentomatoes.com link" Margin="47,69,47,0" VerticalAlignment="Top" Click="Button_Click_Direct_Link" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="18.667" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" x:Name="DirectLink" />
+                	<Button Content="Movie Description" Margin="47,0" VerticalAlignment="Top" Click="Button_Click_Movie_Desc" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" />
+                </Grid>
             </Grid>
-		<Button Content="Find Similar Movies" Margin="55,0" VerticalAlignment="Bottom" Click="Button_Click" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" />
 
         </Grid>
 	

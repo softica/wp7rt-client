@@ -19,6 +19,7 @@ namespace wp7rt_client.Classes
         public List<CastMember> Cast { get; set; }
         public List<Link> Links { get; set; }
         public List<Poster> Posters { get; set; }
+        public string CriticsConsensus { get; set; }
 
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: no rating.","Audience: "); }  }
         public string CriticsRating { get { return ConvertCriticsRatings("Critics: no rating.", "Critics: "); } }

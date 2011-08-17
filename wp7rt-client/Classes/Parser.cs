@@ -33,7 +33,7 @@ namespace wp7rt_client.Classes
             movie.Posters = ParsePosters(jObject["posters"]);
             movie.Ratings = ParseRatings(jObject["ratings"]);
             movie.ReleaseDates = ParseReleaseDates(jObject["release_dates"]);
-
+            movie.CriticsConsensus = ParseCriticsConsensus(jObject["critics_consensus"]);
             return movie;
         }
 
@@ -220,6 +220,12 @@ namespace wp7rt_client.Classes
         {
             return jToken.Value<int>();
         }
+
+        private static string ParseCriticsConsensus(JToken jToken)
+        {
+            return jToken.Value<string>();
+        }
+        
         #endregion
 
     }
