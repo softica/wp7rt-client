@@ -115,7 +115,7 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WP7\Phone.Controls\Phone.Controls.csproj">
+    <ProjectReference Include="..\packages\Phone.Controls\Phone.Controls.csproj">
       <Project>{71A41463-066F-444A-B774-5FB036C913A0}</Project>
       <Name>Phone.Controls</Name>
     </ProjectReference>
