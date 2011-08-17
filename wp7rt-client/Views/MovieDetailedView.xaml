@@ -17,11 +17,11 @@
     <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,0,0,8" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Stretch" >
 		<Grid d:LayoutOverrides="Width" Height="724" VerticalAlignment="Top">
 <!--TitlePanel contains the name of the application and page title-->
-			<StackPanel x:Name="TitlePanel" Grid.Row="0" Height="96" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
+			<StackPanel x:Name="TitlePanel" Grid.Row="0" Height="96" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" MouseLeftButtonDown="TitlePanel_MouseLeftButtonDown">
 
 
 				<TextBlock x:Name="movieTitile" Text="" FontSize="18" Foreground="Yellow" Width="280"/>
-				<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" />
+				<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top"  />
 
 
 			</StackPanel>
@@ -29,8 +29,8 @@
             
                 <Grid x:Name="ContentPanel" Margin="12,77,12,0" d:LayoutOverrides="GridBox">
                     <Grid Height="45" Margin="8,18,-16,0" VerticalAlignment="Top">
-                    	<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
-                    	<TextBlock x:Name="PageTitle" Text="Test" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
+                    	<Rectangle Name="BackgroundTitle" Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
+                    	<TextBlock x:Name="PageTitle" Text="" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="25,5,0,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="35" Width="391" TextWrapping="NoWrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" HorizontalAlignment="Left" />
                     </Grid>
                     <Grid Height="164" Margin="8,67,0,0" VerticalAlignment="Top">
                     	<Grid HorizontalAlignment="Left" Width="126">
@@ -49,12 +49,15 @@
                     	<TextBlock Height="20" Margin="0,13,71,0" TextWrapping="Wrap" Text="Audience" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="79"/>
                     </Grid>
                     <Grid Margin="0,231,0,169">
-                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="18.667" Height="22" VerticalAlignment="Top" />
-                    	<TextBlock TextWrapping="Wrap" Name="Cast" Text="" FontFamily="Tahoma" FontSize="18.667" Margin="0,20,0,0" Height="46" VerticalAlignment="Top"/>
+                    	<TextBlock TextWrapping="Wrap" Name="Directors" Text="" FontFamily="Tahoma" FontSize="18.667" Height="22" VerticalAlignment="Top" FontWeight="Light" />
+                    	<TextBlock TextWrapping="Wrap" Name="Cast" FontFamily="Tahoma" FontSize="18.667" Margin="0,20,0,0" Height="46" VerticalAlignment="Top" FontWeight="Light" />
                     	<my:ScrollableTextBlock  Text=""           
                     		HorizontalAlignment="Left"  x:Name="Consensus" 
-                    		VerticalAlignment="Top" Height="156" Width="456" Margin="0,91,0,0" FontFamily="Trebuchet MS" FontSize="21.333" Foreground="White" FontWeight="Bold" />
-                    	<TextBlock Margin="143,66,143,0" TextWrapping="Wrap" Text="Critics Consensus" Height="25" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Trebuchet MS" d:LayoutOverrides="Width"/>                        
+                    		VerticalAlignment="Top" Height="122" Width="456" Margin="0,125,0,0" FontFamily="Trebuchet MS" FontSize="21.333" Foreground="White" FontWeight="Normal" />
+                    	<Grid Height="45" Margin="8,72,-16,0" VerticalAlignment="Top">
+                    		<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
+                    		<TextBlock x:Name="PageTitle1" Text="Critics Consensus" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
+                    	</Grid>                        
                 </Grid>
             </Grid>
                 <Grid Height="208" Margin="12,0,4,-33" VerticalAlignment="Bottom">

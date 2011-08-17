@@ -21,9 +21,7 @@ namespace wp7rt_client.Views
     {
         public MovieDetailedView()
         {
-            InitializeComponent();
-
-            
+            InitializeComponent();            
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -51,6 +49,10 @@ namespace wp7rt_client.Views
             
 
                 PageTitle.Text = movie.Title;
+                if (PageTitle.ActualWidth > PageTitle.Width)
+                {
+                    PageTitle.FontSize = PageTitle.FontSize * ((double)PageTitle.Width / (double)PageTitle.ActualWidth);
+                }
                 AudiencePerCent.Text = movie.AudienceRatingPerCent;
                 CriticsPerCent.Text = movie.CriticsRatingPerCent;
                 Cast.Text = "Cast: " + movie.CastMembers;
@@ -62,7 +64,14 @@ namespace wp7rt_client.Views
                 Year.Text = "Year: " + movie.Year.ToString();
                 MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
                 Runtime.Text = "Runtime: " + movie.Runtime.ToString();
-                Consensus.Text = movie.CriticsConsensus;
+                if (movie.CriticsConsensus == "")
+                {
+                    Consensus.Text = "No critics consensus available yet...";
+                }
+                else
+                {
+                    Consensus.Text = movie.CriticsConsensus;
+                }
 
                 Uri u;
                 u = new Uri(movie.ImageSourcePath, UriKind.Relative);
@@ -74,8 +83,6 @@ namespace wp7rt_client.Views
 
                 //DirectLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
 
-                PhoneApplicationService.Current.State["RottenTomatoesId"] = movie.RottenTomatoesId;
-                PhoneApplicationService.Current.State["rtDirectLink"] = movie.rtDirectLink;
                 PhoneApplicationService.Current.State["Movie"] = movie;
 
         }      
@@ -83,10 +90,10 @@ namespace wp7rt_client.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (PhoneApplicationService.Current.State.ContainsKey("RottenTomatoesId"))
-            {
-                int movieID = (int)PhoneApplicationService.Current.State["RottenTomatoesId"];
-                NavigationService.Navigate(new Uri("/MoviesList/Similar/" + movieID.ToString(), UriKind.Relative));
+            if (PhoneApplicationService.Current.State.ContainsKey("Movie"))
+            {                
+                Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
+                NavigationService.Navigate(new Uri("/MoviesList/Similar/" + movie.RottenTomatoesId.ToString(), UriKind.Relative));
             }
             
         }
@@ -94,11 +101,11 @@ namespace wp7rt_client.Views
 
         private void Button_Click_Direct_Link(object sender, RoutedEventArgs e)
         {
-            if (PhoneApplicationService.Current.State.ContainsKey("rtDirectLink"))
+            if (PhoneApplicationService.Current.State.ContainsKey("Movie"))
             {
-                string rtDirectLink = (string)PhoneApplicationService.Current.State["rtDirectLink"];
+                Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
                 WebBrowserTask task = new WebBrowserTask();
-                task.URL = rtDirectLink;
+                task.URL = movie.rtDirectLink;
                 task.Show();
             }
         }
@@ -108,7 +115,10 @@ namespace wp7rt_client.Views
             NavigationService.Navigate(new Uri("/MovieDescription/", UriKind.Relative));
         }
 
-
+        private void TitlePanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+        }
 
     }
 }

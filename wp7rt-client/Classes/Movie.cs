@@ -21,8 +21,8 @@ namespace wp7rt_client.Classes
         public List<Poster> Posters { get; set; }
         public string CriticsConsensus { get; set; }
 
-        public string AudienceRating { get { return ConvertAudienceRatings("Audience: no rating.","Audience: "); }  }
-        public string CriticsRating { get { return ConvertCriticsRatings("Critics: no rating.", "Critics: "); } }
+        public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
+        public string CriticsRating { get { return ConvertCriticsRatings("Critics: NA", "Critics: "); } }
         public string ImageSourcePath { get { return ConvertImageSourcePath(); } }
         public string AudienceRatingPerCent { get { return ConvertAudienceRatings("NA",""); } }
         public string CriticsRatingPerCent { get { return ConvertCriticsRatings("NA", ""); } }
@@ -74,7 +74,10 @@ namespace wp7rt_client.Classes
             {
                 r = r + member.Name + ", ";
             }
-            r = r.Remove(r.Length - 2);
+            if (r.Length != 0)
+            {
+                r = r.Remove(r.Length - 2);
+            }
             return r;
         }
 
@@ -86,7 +89,10 @@ namespace wp7rt_client.Classes
                 System.Diagnostics.Debug.WriteLine(member);
                 r = r + member + ", ";
             }
-            r = r.Remove(r.Length - 2);
+            if (r.Length != 0)
+            {
+                r = r.Remove(r.Length - 2);
+            }
             return r;
         }
 
@@ -100,7 +106,11 @@ namespace wp7rt_client.Classes
                 System.Diagnostics.Debug.WriteLine(member);
                 r = r + member + ", ";
             }
-            r = r.Remove(r.Length - 2);
+            if (r.Length != 0)
+            {
+                r = r.Remove(r.Length - 2);
+            }
+
             return r;
         }
 

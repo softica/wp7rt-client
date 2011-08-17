@@ -263,5 +263,10 @@ namespace wp7rt_client.Views
                 NavigationService.Navigate(new Uri("/MovieDetailedView/", UriKind.Relative));
             }
         }
+
+        private void image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+        }
     }
 }

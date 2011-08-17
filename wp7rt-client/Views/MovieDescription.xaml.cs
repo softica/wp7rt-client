@@ -28,8 +28,21 @@ namespace wp7rt_client.Views
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
 
             MovieTitleMedium.Text = movie.Title;
-            MovieDescriptionText.Text = movie.Synopsis;
+            if (movie.Synopsis == "")
+            {
+                MovieDescriptionText.Text = "No synopsis available...";
+            }
+            else
+            {
+                MovieDescriptionText.Text = movie.Synopsis;
+            }
 
+
+        }
+
+        private void image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
         }
     }
 }

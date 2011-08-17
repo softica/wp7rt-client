@@ -25,18 +25,18 @@
         	<StackPanel.RenderTransform>
         		<CompositeTransform Rotation="-0.164"/>
         	</StackPanel.RenderTransform>
-        	<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        	<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="image1_MouseLeftButtonDown" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,0,107">
 
             <Grid Height="45" Margin="8,18,8,0" VerticalAlignment="Top">
         		<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426"/>
         		<TextBlock x:Name="PageTitle" Text="Test" Style="{StaticResource PhoneTextTitle1Style}" FontSize="37.333" TextAlignment="Center" Margin="-11,0,0,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" VerticalAlignment="Top" />
         	</Grid>
 
- 
+
 
 
             <ListBox x:Name="moviesList" 
@@ -46,16 +46,22 @@
 
                         <Grid Height="78" VerticalAlignment="Top">
                             <Image Source="{Binding ImageSourcePath}" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
-                            <TextBlock Margin="44,5,0,0" TextWrapping="Wrap" Text="{Binding Title}" FontFamily="Tahoma" FontSize="29.333" Foreground="White" Height="34" VerticalAlignment="Top"/>
-                            <TextBlock Margin="44,0,0,2" TextWrapping="Wrap" Text="{Binding CriticsRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>
-                            <TextBlock Margin="244,0,0,2" TextWrapping="Wrap" Text="{Binding AudienceRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>                            
+                            <TextBlock Margin="44,5,0,0" TextWrapping="Wrap" Text="{Binding Title}" FontFamily="Tahoma" FontSize="25" Foreground="White" Height="34" VerticalAlignment="Top"/>
+                            <TextBlock Margin="44,0,0,2" TextWrapping="Wrap" Text="{Binding Year}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>
+                            <TextBlock Margin="104,0,0,2" TextWrapping="Wrap" Text="{Binding CriticsRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>                            
+                            <TextBlock Margin="284,0,0,2" TextWrapping="Wrap" Text="{Binding AudienceRating}" FontFamily="Tahoma" FontSize="21.333" Foreground="#FFA5A5A5" Height="34" VerticalAlignment="Bottom"/>                            
                         </Grid>
                    
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+
+            <Grid Height="78" VerticalAlignment="Top">
+                <Image Source="{Binding ImageSourcePath}" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
+            </Grid>
             
         </Grid>
+        
     </Grid>
  
     <!--Sample code showing usage of ApplicationBar-->

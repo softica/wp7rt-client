@@ -223,7 +223,12 @@ namespace wp7rt_client.Classes
 
         private static string ParseCriticsConsensus(JToken jToken)
         {
-            return jToken.Value<string>();
+            if (jToken != null)
+            {
+                return jToken.Value<string>();
+            }
+
+            return "";
         }
         
         #endregion
