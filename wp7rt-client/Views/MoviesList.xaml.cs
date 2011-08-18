@@ -268,5 +268,6 @@ namespace wp7rt_client.Views
         {
             NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
         }
+
     }
 }

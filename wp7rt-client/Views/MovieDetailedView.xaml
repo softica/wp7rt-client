@@ -63,7 +63,7 @@
                 <Grid Height="208" Margin="12,0,4,-33" VerticalAlignment="Bottom">
                 	<Button Content="Find Similar Movies" Margin="47,0,47,-9" VerticalAlignment="Bottom" Click="Button_Click" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" />
                 	<Button Content="Direct rottentomatoes.com link" Margin="47,69,47,0" VerticalAlignment="Top" Click="Button_Click_Direct_Link" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="18.667" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" x:Name="DirectLink" />
-                	<Button Content="Movie Description" Margin="47,0" VerticalAlignment="Top" Click="Button_Click_Movie_Desc" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" />
+                	<Button Content="More Details" Margin="47,0" VerticalAlignment="Top" Click="Button_Click_Movie_Desc" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Height="80" />
                 </Grid>
             </Grid>
 

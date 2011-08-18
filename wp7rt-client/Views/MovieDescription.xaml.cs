@@ -44,5 +44,19 @@ namespace wp7rt_client.Views
         {
             NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
         }
+
+        private void Button_Click_Clips(object sender, RoutedEventArgs e)
+        {
+            if (PhoneApplicationService.Current.State.ContainsKey("Movie"))
+            {
+                Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
+                NavigationService.Navigate(new Uri("/MovieClips/", UriKind.Relative));
+            }
+        }
+
+        private void Button_Click_Reviews(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

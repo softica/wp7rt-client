@@ -14,34 +14,37 @@
     shell:SystemTray.IsVisible="True" xmlns:my="clr-namespace:Phone.Controls;assembly=Phone.Controls">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,0,0,8">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <Grid d:LayoutOverrides="Width" Height="724" VerticalAlignment="Top">
             <!--TitlePanel contains the name of the application and page title-->
-            <StackPanel x:Name="TitlePanel" Grid.Row="0" Height="96" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
+        	<StackPanel x:Name="TitlePanel" Grid.Row="0" Height="96" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment">
 
 
-                <TextBlock x:Name="movieTitile" Text="" FontSize="18" Foreground="Yellow" Width="280"/>
-                <Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="image1_MouseLeftButtonDown" />
+        		<TextBlock x:Name="movieTitile" Text="" FontSize="18" Foreground="Yellow" Width="280"/>
+        		<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="image1_MouseLeftButtonDown" />
 
 
-            </StackPanel>
+        	</StackPanel>
 
 
-            <Grid x:Name="ContentPanel" Margin="12,77,12,0" d:LayoutOverrides="GridBox">
-                <my:ScrollableTextBlock  Text=""           
-                HorizontalAlignment="Left"  Name="MovieDescriptionText" 
-                  VerticalAlignment="Top" Height="477" Width="440" Margin="8,162,0,0" FontFamily="Tahoma" FontSize="24" />
-                <Grid Height="45" Margin="8,18,-16,0" VerticalAlignment="Top">
-                    <Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
-                    <TextBlock x:Name="PageTitle" Text="Movie Description" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
-                </Grid>
-                <TextBlock Name="MovieTitleMedium" Text="Movie Description" Style="{StaticResource PhoneTextTitle1Style}" FontSize="24" TextAlignment="Center" Margin="9,78,7,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="78" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Stretch" />
-            </Grid>
+        	<Grid x:Name="ContentPanel" Margin="12,77,12,-33" d:LayoutOverrides="GridBox">
+        		<my:ScrollableTextBlock  Text=""           
+        			HorizontalAlignment="Left"  x:Name="MovieDescriptionText" 
+        			VerticalAlignment="Top" Height="400" Width="456" Margin="0,137,0,0" FontFamily="Tahoma" FontSize="24" />
+        		<Grid Height="45" Margin="8,18,-16,0" VerticalAlignment="Top">
+        			<Rectangle Fill="#FF469100" Stroke="Black" RadiusX="15" RadiusY="15" Height="46" VerticalAlignment="Top" Width="426" Margin="8,0,30,0"/>
+        			<TextBlock x:Name="PageTitle" Text="Movie Description" Style="{StaticResource PhoneTextTitle1Style}" FontSize="30" TextAlignment="Center" Margin="-19,4,8,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="46" Width="400" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" />
+        		</Grid>
+        		<TextBlock x:Name="MovieTitleMedium" Text="Movie Description" Style="{StaticResource PhoneTextTitle1Style}" FontSize="24" TextAlignment="Center" Margin="9,78,7,0" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Height="59" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.592,0.5" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Stretch" />
+        		<Grid Height="143" VerticalAlignment="Bottom" Margin="8,0">
+        			<Button x:Name="Reviews" Content="Reviews" Margin="0,0,0,-8" Click="Button_Click_Reviews" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Width="370" HorizontalAlignment="Center" Height="80" VerticalAlignment="Bottom" />
+        			<Button x:Name="Clips" Content="Clips and Trailers" Margin="35,0,0,0" Click="Button_Click_Clips" FontFamily="Trebuchet MS" FontWeight="Bold" Foreground="#FFF7F119" Background="#FF469100" BorderBrush="#FFF7F119" FontSize="29.333" BorderThickness="3" UseLayoutRounding="True" ClickMode="Press" Width="370" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" RenderTransformOrigin="0.362,0.512" />
+        		</Grid>
+        	</Grid>
         </Grid>
 
 

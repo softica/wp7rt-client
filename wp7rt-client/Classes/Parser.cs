@@ -10,6 +10,7 @@ namespace wp7rt_client.Classes
 {
     public static class Parser
     {
+
         /// <summary>
         /// Parse a JSON string representing a Movie item
         /// </summary>
@@ -36,6 +37,20 @@ namespace wp7rt_client.Classes
             movie.CriticsConsensus = ParseCriticsConsensus(jObject["critics_consensus"]);
             return movie;
         }
+
+        /// <summary>
+        /// Parse a JSON string representing clips related to the movie
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed</param>
+        /// <returns>Movie object</returns>
+        public static Movie ParseClips(string json, Movie movie)
+        {
+            JObject jObject = JObject.Parse(json);
+                        
+            movie.Clips = ParseMovieClips(jObject["clips"]);
+            return movie;
+        }
+
 
         /// <summary>
         /// Parse Search Results For Movies
@@ -137,6 +152,43 @@ namespace wp7rt_client.Classes
             }
 
             return links;
+        }
+
+        private static List<Clip> ParseMovieClips(JToken jToken)
+        {
+            List<Clip> clips = new List<Clip>();
+            var jsonArray = (JArray)jToken;
+
+            if (jsonArray == null)
+                return clips;
+
+            foreach (var clip in jsonArray)
+            {
+                Clip newClip = new Clip();
+
+                newClip.Title = (string)clip["title"];
+                newClip.Duration = (string)clip["duration"];
+                newClip.Thumbnail = (string)clip["thumbnail"];                
+
+                var links = (JObject)clip["links"];
+
+                if (links != null)
+                {
+                    foreach (var link in links)
+                    {                           
+                        Link newLink = new Link { Type = (string)link.Key, Url = (string)link.Value };
+                        if ((string)link.Key == "alternate")
+                        {
+                            newClip.AbsoluteLink = (string)link.Value;
+                        }
+                        newClip.Links.Add(newLink);                        
+                    }
+                }
+
+                clips.Add(newClip);
+            }
+
+            return clips;
         }
 
         private static List<CastMember> ParseCastMembers(JToken jToken)

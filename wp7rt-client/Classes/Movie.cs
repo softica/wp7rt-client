@@ -20,6 +20,7 @@ namespace wp7rt_client.Classes
         public List<Link> Links { get; set; }
         public List<Poster> Posters { get; set; }
         public string CriticsConsensus { get; set; }
+        public List<Clip> Clips { get; set; }
 
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
         public string CriticsRating { get { return ConvertCriticsRatings("Critics: NA", "Critics: "); } }
@@ -33,6 +34,7 @@ namespace wp7rt_client.Classes
         public string DVDReleaseDate { get { return ConvertDVDReleaseDate(); } }
         public string SmallPoster { get { return ConvertPoster(); } }
         public string rtDirectLink { get { return ConvertDirectLink(); } }
+        //public string MovieClipThumbnail { get { return ConvertMovieClipThumbnail(); } }
 
         public Movie()
         {
@@ -43,6 +45,7 @@ namespace wp7rt_client.Classes
             Posters = new List<Poster>();
             ReleaseDates = new List<ReleaseDate>();
             Ratings = new List<Rating>();
+            Clips = new List<Clip>();
         }
 
         #region LayoutAccessors
@@ -258,5 +261,21 @@ namespace wp7rt_client.Classes
     {
         public string Type { get; set; }
         public string Score { get; set; }
-    } 
+    }
+
+    public class Clip
+    {
+        public string Title { get; set; }
+        public string Duration { get; set; }
+        public string Thumbnail { get; set; }
+        public List<Link> Links { get; set; }
+        public string AbsoluteLink { get; set; }
+
+        public Clip()
+        {
+            Links = new List<Link>();
+            AbsoluteLink = "";
+        }
+    }
+
 }

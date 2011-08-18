@@ -37,3 +37,4 @@ C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\MainPage.g.i.c
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieDescription.g.i.cs
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieDetailedView.g.i.cs
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MoviesList.g.i.cs
+C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieClips.g.i.cs
