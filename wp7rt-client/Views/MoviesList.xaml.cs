@@ -258,7 +258,7 @@ namespace wp7rt_client.Views
         private void moviesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (moviesList.SelectedItem != null)
-            {
+            {                
                 PhoneApplicationService.Current.State["Movie"] = moviesList.SelectedItem;
                 NavigationService.Navigate(new Uri("/MovieDetailedView/", UriKind.Relative));
             }

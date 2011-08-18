@@ -44,12 +44,12 @@ namespace wp7rt_client.Classes
         /// <summary>
         /// Endpoint for searching for reviews for an individual movie.
         /// </summary>
-        public const string MOVIE_INDIVIDUAL_REVIEWS = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{1}/reviews.json?apikey={0}";
+        public const string MOVIE_INDIVIDUAL_REVIEWS = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{0}/reviews.json?apikey=" + API_KEY;
 
         /// <summary>
         /// Endpoint for searching for the cast of an individual movie.
         /// </summary>
-        public const string MOVIE_INDIVIDUAL_CAST = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{1}/cast.json?apikey={0}";
+        public const string MOVIE_INDIVIDUAL_CAST = @"http://api.rottentomatoes.com/api/public/v1.0/movies/{0}/cast.json?apikey=" + API_KEY;
 
         /// <summary>
         /// Endpoint for listing the current box office.

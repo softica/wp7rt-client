@@ -38,7 +38,6 @@ namespace wp7rt_client.Views
 
             //System.Diagnostics.Debug.WriteLine(movie.Genres);
             //System.Diagnostics.Debug.WriteLine(movie.Cast);
-
         }
 
         private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
@@ -46,46 +45,40 @@ namespace wp7rt_client.Views
             string jsonResponse = e.Result.ToString();
             Movie movie = Parser.ParseMovie(jsonResponse);
 
-            
+            PageTitle.Text = movie.Title;
+            //Scale title to fit available area
+            if (PageTitle.ActualWidth > PageTitle.Width)
+            {
+                PageTitle.FontSize = PageTitle.FontSize * ((double)PageTitle.Width / (double)PageTitle.ActualWidth);
+            }
+            AudiencePerCent.Text = movie.AudienceRatingPerCent;
+            CriticsPerCent.Text = movie.CriticsRatingPerCent;
+            Cast.Text = "Cast: " + movie.CastMembers;
+            Directors.Text = movie.MovieDirectors;            
+            Genres.Text = movie.MovieGenres;
+            DVD.Text = movie.DVDReleaseDate;
+            InTheaters.Text = movie.TheatersReleaseDate;
+            Year.Text = "Year: " + movie.Year.ToString();
+            MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
+            Runtime.Text = "Runtime: " + movie.Runtime.ToString();
+            if (movie.CriticsConsensus == "")
+            {
+                Consensus.Text = "No critics consensus available yet...";
+            }
+            else
+            {
+                Consensus.Text = movie.CriticsConsensus;
+            }
 
-                PageTitle.Text = movie.Title;
-                if (PageTitle.ActualWidth > PageTitle.Width)
-                {
-                    PageTitle.FontSize = PageTitle.FontSize * ((double)PageTitle.Width / (double)PageTitle.ActualWidth);
-                }
-                AudiencePerCent.Text = movie.AudienceRatingPerCent;
-                CriticsPerCent.Text = movie.CriticsRatingPerCent;
-                Cast.Text = "Cast: " + movie.CastMembers;
-                Directors.Text = movie.MovieDirectors;
-                //Synopsis.Text = movie.Synopsis;
-                Genres.Text = movie.MovieGenres;
-                DVD.Text = movie.DVDReleaseDate;
-                InTheaters.Text = movie.TheatersReleaseDate;
-                Year.Text = "Year: " + movie.Year.ToString();
-                MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
-                Runtime.Text = "Runtime: " + movie.Runtime.ToString();
-                if (movie.CriticsConsensus == "")
-                {
-                    Consensus.Text = "No critics consensus available yet...";
-                }
-                else
-                {
-                    Consensus.Text = movie.CriticsConsensus;
-                }
+            Uri u;
+            u = new Uri(movie.ImageSourcePath, UriKind.Relative);
+            RatingImage.Source = new BitmapImage(u);
 
-                Uri u;
-                u = new Uri(movie.ImageSourcePath, UriKind.Relative);
-                
-                RatingImage.Source = new BitmapImage(u);
+            u = new Uri(movie.SmallPoster, UriKind.Absolute);
+            poster.Source = new BitmapImage(u);
 
-                u = new Uri(movie.SmallPoster, UriKind.Absolute);
-                poster.Source = new BitmapImage(u);
-
-                //DirectLink.NavigateUri = new Uri(movie.rtDirectLink, UriKind.Absolute);
-
-                PhoneApplicationService.Current.State["Movie"] = movie;
-
-        }      
+            PhoneApplicationService.Current.State["Movie"] = movie;
+        }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -105,7 +98,7 @@ namespace wp7rt_client.Views
             {
                 Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
                 WebBrowserTask task = new WebBrowserTask();
-                task.URL = movie.rtDirectLink;
+                task.Uri = new Uri(movie.rtDirectLink, UriKind.Absolute);
                 task.Show();
             }
         }

@@ -47,10 +47,9 @@ namespace wp7rt_client.Classes
 
         #region LayoutAccessors
 
-        public string ConvertAudienceRatings(string defaultstring, string nondefault) 
+        private string ConvertAudienceRatings(string defaultstring, string nondefault) 
         {
-            string s;
-            s = defaultstring;
+            string s = defaultstring;
 
             foreach (var elem in Ratings)
                 {
@@ -64,10 +63,9 @@ namespace wp7rt_client.Classes
                 }
 
             return s;
-
         }
 
-        public string ConvertCastMembers()
+        private string ConvertCastMembers()
         {
             string r = "";
             foreach (var member in Cast)
@@ -81,12 +79,11 @@ namespace wp7rt_client.Classes
             return r;
         }
 
-        public string ConvertDirectorsMembers()
+        private string ConvertDirectorsMembers()
         {
             string r = "Directed by: ";
             foreach (var member in Directors)
-            {
-                System.Diagnostics.Debug.WriteLine(member);
+            {                
                 r = r + member + ", ";
             }
             if (r.Length != 0)
@@ -96,28 +93,23 @@ namespace wp7rt_client.Classes
             return r;
         }
 
-        public string ConvertMovieGenres()
+        private string ConvertMovieGenres()
         {
-            System.Diagnostics.Debug.WriteLine("Genres");
-            System.Diagnostics.Debug.WriteLine(Genres);
             string r = "";
             foreach (var member in Genres)
             {
-                System.Diagnostics.Debug.WriteLine(member);
                 r = r + member + ", ";
             }
             if (r.Length != 0)
             {
                 r = r.Remove(r.Length - 2);
             }
-
             return r;
         }
 
-        public string ConvertCriticsRatings(string defaultstring, string nondefault)
+        private string ConvertCriticsRatings(string defaultstring, string nondefault)
         {
-            string s;
-            s = defaultstring;
+            string s = defaultstring;
 
             foreach (var elem in Ratings)
             {
@@ -129,24 +121,17 @@ namespace wp7rt_client.Classes
                     }
                 }
             }
-
             return s;
-
         }
 
-        public string ConvertImageSourcePath()
+        private string ConvertImageSourcePath()
         {
             string path = "/wp7rt-client;component/Images/movie.jpg";
-
             bool certiiedFreshSet = false;
-
             foreach (var elem in Ratings)
             {
-
                 if (elem.Type == "critics_rating" && elem.Score == "\"Certified Fresh\"")
                 {
-                    System.Diagnostics.Debug.WriteLine(elem.Type);
-                    System.Diagnostics.Debug.WriteLine(elem.Score);
                     path = "/wp7rt-client;component/Images/CertifiedFresh_logo.png";
                     certiiedFreshSet = true;
                 }
@@ -165,19 +150,14 @@ namespace wp7rt_client.Classes
                             path = "/wp7rt-client;component/Images/fresh.png";
                         }
                     }
-
                 }
-
             }
-
             return path;
-
         }
 
-        public string ConvertTheaterReleaseDate()
+        private string ConvertTheaterReleaseDate()
         {
-            string s="";
-            
+            string s = "";            
             foreach (var elem in ReleaseDates)
             {
                 if (elem.Type == "theater")
@@ -185,14 +165,12 @@ namespace wp7rt_client.Classes
                     s = "In theaters: " + elem.Date;
                 }
             }
-
             return s;
         }
 
-        public string ConvertDVDReleaseDate()
+        private string ConvertDVDReleaseDate()
         {
             string s="";
-
             foreach (var elem in ReleaseDates)
             {
                 if (elem.Type == "dvd")
@@ -200,14 +178,12 @@ namespace wp7rt_client.Classes
                     s = "DVD: " + elem.Date;
                 }
             }
-
             return s;
         }
 
-        public string ConvertPoster()
+        private string ConvertPoster()
         {
             string s = "";
-
             foreach (var elem in Posters)
             {
                 if (elem.Type == "profile")
@@ -215,14 +191,12 @@ namespace wp7rt_client.Classes
                     s = elem.Url;
                 }
             }
-
             return s;
         }
 
-        public string ConvertDirectLink()
+        private string ConvertDirectLink()
         {
             string s = "";
-
             foreach (var elem in Links)
             {
                 if (elem.Type == "alternate")
@@ -230,7 +204,6 @@ namespace wp7rt_client.Classes
                     s = elem.Url;
                 }
             }
-
             return s;
         }
 
