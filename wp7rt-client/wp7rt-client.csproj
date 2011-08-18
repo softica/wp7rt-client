@@ -67,6 +67,7 @@
     <Compile Include="Classes\Movie.cs" />
     <Compile Include="Classes\MovieSearchResults.cs" />
     <Compile Include="Classes\Parser.cs" />
+    <Compile Include="Classes\Reviews.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -79,6 +80,9 @@
     </Compile>
     <Compile Include="Views\MovieDetailedView.xaml.cs">
       <DependentUpon>MovieDetailedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MovieReviews.xaml.cs">
+      <DependentUpon>MovieReviews.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MoviesList.xaml.cs">
       <DependentUpon>MoviesList.xaml</DependentUpon>
@@ -102,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MovieDetailedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MovieReviews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

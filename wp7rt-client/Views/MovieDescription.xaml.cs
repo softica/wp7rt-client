@@ -56,7 +56,7 @@ namespace wp7rt_client.Views
 
         private void Button_Click_Reviews(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/MovieReviews/", UriKind.Relative));
         }
     }
 }

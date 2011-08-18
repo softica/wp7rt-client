@@ -51,6 +51,18 @@ namespace wp7rt_client.Classes
             return movie;
         }
 
+        /// <summary>
+        /// Parse a JSON string representing reviews related to the movie
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed</param>
+        /// <returns>Movie object</returns>
+        public static Movie ParseReviews(string json, Movie movie)
+        {
+            JObject jObject = JObject.Parse(json);
+
+            movie.Reviews = ParseMovieReviews(jObject["reviews"]);
+            return movie;
+        }
 
         /// <summary>
         /// Parse Search Results For Movies
@@ -190,6 +202,48 @@ namespace wp7rt_client.Classes
 
             return clips;
         }
+
+        private static Reviews ParseMovieReviews(JToken jToken)
+        {
+            List<Review> reviews = new List<Review>();
+            Reviews MovieReviews = new Reviews();
+
+            var jsonArray = (JArray)jToken;
+
+            if (jsonArray == null)
+                return MovieReviews;
+
+            foreach (var review in jsonArray)
+            {
+                Review newReview = new Review();
+
+                newReview.Critic = (string)review["critic"];
+                newReview.Date = (string)review["date"];
+                newReview.Freshness = (string)review["freshness"];
+                newReview.Publication = (string)review["publication"];
+                newReview.Quote = (string)review["quote"];
+                
+                var links = (JObject)review["links"];
+
+                if (links != null)
+                {
+                    foreach (var link in links)
+                    {
+                        Link newLink = new Link { Type = (string)link.Key, Url = (string)link.Value };
+                        if ((string)link.Key == "review")
+                        {
+                            newReview.AbsoluteLink = (string)link.Value;
+                        }
+                        newReview.Links.Add(newLink);
+                    }
+                }
+
+                MovieReviews.MovieReviews.Add(newReview);
+            }
+
+            return MovieReviews;
+        }
+
 
         private static List<CastMember> ParseCastMembers(JToken jToken)
         {

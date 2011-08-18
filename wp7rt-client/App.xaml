@@ -15,6 +15,7 @@
                 <nav:UriMapping Uri="/MovieDescription/" MappedUri="/Views/MovieDescription.xaml" />
                 <nav:UriMapping Uri="/MainPage/" MappedUri="/MainPage.xaml" />
                 <nav:UriMapping Uri="/MovieClips/" MappedUri="/Views/MovieClips.xaml" />
+                <nav:UriMapping Uri="/MovieReviews/" MappedUri="/Views/MovieReviews.xaml" />
             </nav:UriMapper.UriMappings>
         </nav:UriMapper>
     </Application.Resources>

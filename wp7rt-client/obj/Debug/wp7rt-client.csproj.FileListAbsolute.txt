@@ -38,3 +38,4 @@ C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieDes
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieDetailedView.g.i.cs
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MoviesList.g.i.cs
 C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieClips.g.i.cs
+C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\Views\MovieReviews.g.i.cs

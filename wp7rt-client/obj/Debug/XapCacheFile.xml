@@ -1,8 +1,8 @@
-﻿<xapCache source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Bin\Debug\wp7rt_client.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2011-08-18 14:16:52">
+﻿<xapCache source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Bin\Debug\wp7rt_client.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2011-08-18 15:48:39">
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="2011-08-18 09:26:35" />
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Background.png" archivePath="Background.png" lastWriteTime="2011-08-10 11:29:02" />
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\Images\CertifiedFresh_logo.png" archivePath="Images\CertifiedFresh_logo.png" lastWriteTime="2011-08-10 15:11:37" />
-  <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\wp7rt-client.dll" archivePath="wp7rt-client.dll" lastWriteTime="2011-08-18 14:16:51" />
+  <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\obj\Debug\wp7rt-client.dll" archivePath="wp7rt-client.dll" lastWriteTime="2011-08-18 15:48:38" />
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\packages\Newtonsoft.Json.4.0.1\lib\WP\Newtonsoft.Json.WindowsPhone.dll" archivePath="Newtonsoft.Json.WindowsPhone.dll" lastWriteTime="2011-08-10 11:29:01" />
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\packages\Phone.Controls\Bin\Debug\Phone.Controls.dll" archivePath="Phone.Controls.dll" lastWriteTime="2011-08-12 12:09:40" />
   <file source="C:\Users\wp7\Desktop\Projects\wp7rt-client\wp7rt-client\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="2011-08-10 11:38:55" />

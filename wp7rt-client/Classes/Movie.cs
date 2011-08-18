@@ -21,6 +21,7 @@ namespace wp7rt_client.Classes
         public List<Poster> Posters { get; set; }
         public string CriticsConsensus { get; set; }
         public List<Clip> Clips { get; set; }
+        public Reviews Reviews { get; set; }
 
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
         public string CriticsRating { get { return ConvertCriticsRatings("Critics: NA", "Critics: "); } }
@@ -34,8 +35,7 @@ namespace wp7rt_client.Classes
         public string DVDReleaseDate { get { return ConvertDVDReleaseDate(); } }
         public string SmallPoster { get { return ConvertPoster(); } }
         public string rtDirectLink { get { return ConvertDirectLink(); } }
-        //public string MovieClipThumbnail { get { return ConvertMovieClipThumbnail(); } }
-
+        
         public Movie()
         {
             Directors = new List<string>();
