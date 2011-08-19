@@ -41,19 +41,21 @@
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Margin="8,69,8,0" SelectionChanged="ReviewsList_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid Height="178" VerticalAlignment="Top">
-                                <TextBlock x:Name="Critic" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="{Binding Critic}" VerticalAlignment="Top" Width="214" FontFamily="Trebuchet MS" FontSize="18.667"/>
-                                <TextBlock Height="32" TextWrapping="Wrap" Text="{Binding Where}" VerticalAlignment="Top" FontFamily="Trebuchet MS" Margin="218,0,0,0" FontSize="18.667"/>
-                                <TextBlock x:Name="Freshness" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" Text="{Binding Freshness}" VerticalAlignment="Top" Width="214" FontFamily="Trebuchet MS" FontSize="18.667" Margin="0,32,0,0"/>
-                                <TextBlock x:Name="Where" Height="32" TextWrapping="Wrap" Text="{Binding Publication}" VerticalAlignment="Top" FontFamily="Trebuchet MS" Margin="218,32,0,0" FontSize="18.667"/>
-                                <TextBlock x:Name="Date" Height="32" TextWrapping="Wrap" Text="{Binding Date}" VerticalAlignment="Top" FontFamily="Trebuchet MS" Margin="218,0,0,0" FontSize="18.667"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Quote}" FontFamily="Trebuchet MS" FontSize="18.667" Margin="0,64,0,0" Foreground="#FFA5A5A5" TextTrimming="WordEllipsis"/>
+                            <Grid Height="186" VerticalAlignment="Top">
+                                <TextBlock x:Name="Critic" Height="32" TextWrapping="Wrap" Text="{Binding Critic}" VerticalAlignment="Top" FontFamily="Trebuchet MS" FontSize="18.667" Margin="0,0,176,0" Foreground="#FFF7F119"/>
+                                <TextBlock x:Name="OrgScore" HorizontalAlignment="Right" Height="32" TextWrapping="Wrap" Text="{Binding OrgScore}" VerticalAlignment="Top" Width="81" FontFamily="Trebuchet MS" FontSize="16.667" Margin="0,32,0,0" RenderTransformOrigin="0.65,0.562" TextAlignment="Left"/>
+                                <TextBlock x:Name="Where" TextWrapping="Wrap" Text="{Binding Publication}" FontFamily="Trebuchet MS" Margin="0,32,176,0" FontSize="16.667" Height="32" VerticalAlignment="Top"/>
+                                <TextBlock x:Name="Date" Height="32" TextWrapping="Wrap" Text="{Binding Date}" VerticalAlignment="Top" FontFamily="Trebuchet MS" FontSize="18.667" HorizontalAlignment="Right" Width="172" Foreground="#FFF7F119"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Quote}" FontFamily="Trebuchet MS" FontSize="18.667" Margin="0,64,0,8" Foreground="#FFA5A5A5" TextTrimming="WordEllipsis"/>
+                                <TextBlock x:Name="OrgScoreText" TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="16.667" Margin="0,32,85,0" RenderTransformOrigin="0.65,0.562" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Width="87" Text="Org. score:" TextAlignment="Left"/>
+                                <Rectangle Fill="#FF469100" Height="8" Stroke="Black" VerticalAlignment="Bottom" Width="405" RadiusX="5" RadiusY="5" Margin="15,0,15,8"/>
+                                <Rectangle Fill="Transparent" Height="8" Stroke="Black" VerticalAlignment="Bottom" Width="426" />
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                
 
+                
             </Grid>
         </Grid>
 

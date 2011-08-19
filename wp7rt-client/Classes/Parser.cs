@@ -222,6 +222,8 @@ namespace wp7rt_client.Classes
                 newReview.Freshness = (string)review["freshness"];
                 newReview.Publication = (string)review["publication"];
                 newReview.Quote = (string)review["quote"];
+
+                if ((string)review["original_score"] != null) { newReview.OrgScore = (string)review["original_score"]; }               
                 
                 var links = (JObject)review["links"];
 

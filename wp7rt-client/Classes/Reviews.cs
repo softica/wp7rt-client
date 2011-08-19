@@ -24,12 +24,16 @@ namespace wp7rt_client.Classes
         public string Quote { get; set; }
         public List<Link> Links { get; set; }
         public string AbsoluteLink { get; set; }
-
+        public string OrgScore { get; set; }
+                
         public Review()
         {
             Links = new List<Link>();
             AbsoluteLink = "";
+            OrgScore = "NA";
         }
+
+        
     }
 
 }
