@@ -198,7 +198,10 @@ namespace wp7rt_client.Classes
                     }
                 }
 
-                ListOfClips.Clips.Add(newClip);
+                if (newClip.Duration != "-1")
+                {
+                    ListOfClips.Clips.Add(newClip);
+                }
             }
 
             return ListOfClips;

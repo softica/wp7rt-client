@@ -14,11 +14,15 @@ using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone.Tasks;
+using System.Net.NetworkInformation;
 
 namespace wp7rt_client.Views
 {
     public partial class MovieDetailedView : PhoneApplicationPage
     {
+
+        bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+
         public MovieDetailedView()
         {
             InitializeComponent();            
@@ -28,6 +32,13 @@ namespace wp7rt_client.Views
         {
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
+
+            if (!isNetworkAvailable)
+            {
+                MessageBox.Show("Network is not available!");
+                NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+            }
+
 
             var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_INFORMATION, movie.RottenTomatoesId);
             Uri uri = new Uri(url, UriKind.Absolute);
@@ -43,8 +54,12 @@ namespace wp7rt_client.Views
         private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             string jsonResponse = e.Result.ToString();
-            Movie movie = Parser.ParseMovie(jsonResponse);
+            Movie movie = Parser.ParseMovie(jsonResponse);            
+            DisplayMovieDetails(movie);
+        }
 
+        private void DisplayMovieDetails(Movie movie)
+        {
             PageTitle.Text = movie.Title;
             //Scale title to fit available area
             if (PageTitle.ActualWidth > PageTitle.Width)
@@ -54,7 +69,7 @@ namespace wp7rt_client.Views
             AudiencePerCent.Text = movie.AudienceRatingPerCent;
             CriticsPerCent.Text = movie.CriticsRatingPerCent;
             Cast.Text = "Cast: " + movie.CastMembers;
-            Directors.Text = movie.MovieDirectors;            
+            Directors.Text = movie.MovieDirectors;
             Genres.Text = movie.MovieGenres;
             DVD.Text = movie.DVDReleaseDate;
             InTheaters.Text = movie.TheatersReleaseDate;
@@ -74,12 +89,11 @@ namespace wp7rt_client.Views
             u = new Uri(movie.ImageSourcePath, UriKind.Relative);
             RatingImage.Source = new BitmapImage(u);
 
-            u = new Uri(movie.SmallPoster, UriKind.Absolute);
+            u = new Uri(movie.SmallPoster, UriKind.RelativeOrAbsolute);
             poster.Source = new BitmapImage(u);
 
             PhoneApplicationService.Current.State["Movie"] = movie;
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

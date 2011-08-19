@@ -22,7 +22,7 @@ namespace wp7rt_client.Classes
         public string CriticsConsensus { get; set; }
         public MovieClips MovieClips { get; set; }
         public Reviews Reviews { get; set; }
-
+        
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
         public string CriticsRating { get { return ConvertCriticsRatings("Critics: NA", "Critics: "); } }
         public string ImageSourcePath { get { return ConvertImageSourcePath(); } }
@@ -44,8 +44,7 @@ namespace wp7rt_client.Classes
             Links = new List<Link>();
             Posters = new List<Poster>();
             ReleaseDates = new List<ReleaseDate>();
-            Ratings = new List<Rating>();
-            
+            Ratings = new List<Rating>();            
         }
 
         #region LayoutAccessors
@@ -186,14 +185,15 @@ namespace wp7rt_client.Classes
 
         private string ConvertPoster()
         {
-            string s = "";
+            string s = "/wp7rt-client;component/Images/poster_default.png";
             foreach (var elem in Posters)
             {
-                if (elem.Type == "profile")
+                if (elem.Type == "profile" && !elem.Url.Contains(".gif"))
                 {
                     s = elem.Url;
                 }
             }
+            
             return s;
         }
 

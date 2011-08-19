@@ -13,11 +13,14 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Tasks;
+using System.Net.NetworkInformation;
 
 namespace wp7rt_client.Views
 {
     public partial class MovieReviews : PhoneApplicationPage
     {
+        bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+
         public MovieReviews()
         {
             InitializeComponent();
@@ -33,6 +36,16 @@ namespace wp7rt_client.Views
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
 
+            if (!isNetworkAvailable)
+            {
+                MessageBox.Show("Network is not available!");
+                NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+            }
+
+            if (movie.Reviews != null) { 
+                DisplayReviews(movie); 
+            }
+            
             var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_REVIEWS, movie.RottenTomatoesId);
             Uri uri = new Uri(url, UriKind.Absolute);
 
@@ -79,6 +92,7 @@ namespace wp7rt_client.Views
             if (ReviewsList.SelectedItem != null)
             {
                 Review review = ReviewsList.SelectedItem as Review;
+                ReviewsList.SelectedIndex = -1;
                 WebBrowserTask task = new WebBrowserTask();
                 task.Uri = new Uri(review.AbsoluteLink, UriKind.Absolute);
                 task.Show();

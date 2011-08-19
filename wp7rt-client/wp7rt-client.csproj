@@ -135,6 +135,7 @@
     <Resource Include="Images\CertifiedFresh_logo.png" />
     <Resource Include="Images\rotten_logo.png" />
     <Resource Include="Images\movie.jpg" />
+    <Resource Include="Images\poster_default.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>

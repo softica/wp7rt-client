@@ -13,11 +13,14 @@ using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
+using System.Net.NetworkInformation;
 
 namespace wp7rt_client.Views
 {
     public partial class MovieClips : PhoneApplicationPage
     {
+        bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+
         public MovieClips()
         {
             InitializeComponent();
@@ -27,6 +30,15 @@ namespace wp7rt_client.Views
         {
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
+
+            if (!isNetworkAvailable)
+            {
+                MessageBox.Show("Network is not available!");
+                NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+            }
+
+
+            if (movie.MovieClips != null) { DisplayClips(movie); }
 
             var url = String.Format(APIEndpoints.MOVIE_CLIPS, movie.RottenTomatoesId);
             Uri uri = new Uri(url, UriKind.Absolute);
@@ -79,7 +91,8 @@ namespace wp7rt_client.Views
         {
             if (ClipsList.SelectedItem != null)
             {
-                Clip clip = ClipsList.SelectedItem as Clip;                
+                Clip clip = ClipsList.SelectedItem as Clip;
+                ClipsList.SelectedIndex = -1;
                 WebBrowserTask task = new WebBrowserTask();
                 task.Uri = new Uri(clip.AbsoluteLink, UriKind.Absolute);
                 task.Show();

@@ -12,29 +12,43 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
+using System.Net.NetworkInformation;
 
 namespace wp7rt_client.Views
 {
     public partial class MoviesList : PhoneApplicationPage
     {
+        public List<Movie> ListOfMovies { get; set; }
+        public string ListType { get; set; }
+        bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+        
         public MoviesList()
         {
             InitializeComponent();
+            ListOfMovies = new List<Movie>();
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
+            if (!isNetworkAvailable)
+            {
+                MessageBox.Show("Network is not available!");
+                NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+            }
+
             string query;
             NavigationContext.QueryString.TryGetValue("Query", out query);
 
             string type;
-            NavigationContext.QueryString.TryGetValue("Type", out type);          
+            NavigationContext.QueryString.TryGetValue("Type", out type);
+
+            if (ListOfMovies.Count != 0) { DisplayMovies(ListOfMovies); }
 
             // Movies
             if (type == "Theaters")
-            {
+            {                
                 ListMoviesInTheatres();
             }
             else if (type == "BoxOffice")
@@ -242,17 +256,20 @@ namespace wp7rt_client.Views
         {
             string jsonResponse = e.Result.ToString();
             var movies = Parser.ParseMovieSearchResults(jsonResponse);
-
-            List<Movie> list = new List<Movie>();
-
+                      
             foreach (var movie in movies)
             {
-                list.Add(movie);
+                ListOfMovies.Add(movie);
             }
 
-            moviesList.ItemsSource = list;
+            DisplayMovies(ListOfMovies);
 
-        }      
+        }
+
+        private void DisplayMovies(List<Movie> list)
+        {
+            moviesList.ItemsSource = list;
+        }
 
 
         private void moviesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -260,14 +277,20 @@ namespace wp7rt_client.Views
             if (moviesList.SelectedItem != null)
             {                
                 PhoneApplicationService.Current.State["Movie"] = moviesList.SelectedItem;
+                
+                moviesList.SelectedIndex = -1; //clear the selection index 
+
                 NavigationService.Navigate(new Uri("/MovieDetailedView/", UriKind.Relative));
+                
             }
         }
+
 
         private void image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
         }
+
 
     }
 }

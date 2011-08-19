@@ -54,6 +54,7 @@
                    
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+            	
             </ListBox>
 
             <Grid Height="78" VerticalAlignment="Top">
