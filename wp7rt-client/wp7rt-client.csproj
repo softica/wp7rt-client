@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Classes\APIEndpoints.cs" />
     <Compile Include="Classes\Movie.cs" />
+    <Compile Include="Classes\MovieClips.cs" />
     <Compile Include="Classes\MovieSearchResults.cs" />
     <Compile Include="Classes\Parser.cs" />
     <Compile Include="Classes\Reviews.cs" />

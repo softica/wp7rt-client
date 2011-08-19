@@ -20,7 +20,7 @@ namespace wp7rt_client.Classes
         public List<Link> Links { get; set; }
         public List<Poster> Posters { get; set; }
         public string CriticsConsensus { get; set; }
-        public List<Clip> Clips { get; set; }
+        public MovieClips MovieClips { get; set; }
         public Reviews Reviews { get; set; }
 
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
@@ -45,7 +45,7 @@ namespace wp7rt_client.Classes
             Posters = new List<Poster>();
             ReleaseDates = new List<ReleaseDate>();
             Ratings = new List<Rating>();
-            Clips = new List<Clip>();
+            
         }
 
         #region LayoutAccessors
@@ -263,19 +263,6 @@ namespace wp7rt_client.Classes
         public string Score { get; set; }
     }
 
-    public class Clip
-    {
-        public string Title { get; set; }
-        public string Duration { get; set; }
-        public string Thumbnail { get; set; }
-        public List<Link> Links { get; set; }
-        public string AbsoluteLink { get; set; }
 
-        public Clip()
-        {
-            Links = new List<Link>();
-            AbsoluteLink = "";
-        }
-    }
 
 }

@@ -44,7 +44,7 @@ namespace wp7rt_client.Views
 
             movie = Parser.ParseClips(jsonResponse, movie);
 
-            foreach (var clip in movie.Clips)
+            foreach (var clip in movie.MovieClips.Clips)
             {
                 System.Diagnostics.Debug.WriteLine(clip.Title);
             }            
@@ -57,7 +57,7 @@ namespace wp7rt_client.Views
             
             List<Clip> list = new List<Clip>();
 
-            foreach (var clip in movie.Clips)
+            foreach (var clip in movie.MovieClips.Clips)
             {
                 if (clip.AbsoluteLink != "")
                 {

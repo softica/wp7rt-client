@@ -47,7 +47,7 @@ namespace wp7rt_client.Classes
         {
             JObject jObject = JObject.Parse(json);
                         
-            movie.Clips = ParseMovieClips(jObject["clips"]);
+            movie.MovieClips = ParseMovieClips(jObject["clips"]);
             return movie;
         }
 
@@ -166,13 +166,14 @@ namespace wp7rt_client.Classes
             return links;
         }
 
-        private static List<Clip> ParseMovieClips(JToken jToken)
+        private static MovieClips ParseMovieClips(JToken jToken)
         {
-            List<Clip> clips = new List<Clip>();
+            MovieClips ListOfClips = new MovieClips();
+
             var jsonArray = (JArray)jToken;
 
             if (jsonArray == null)
-                return clips;
+                return ListOfClips;
 
             foreach (var clip in jsonArray)
             {
@@ -197,15 +198,14 @@ namespace wp7rt_client.Classes
                     }
                 }
 
-                clips.Add(newClip);
+                ListOfClips.Clips.Add(newClip);
             }
 
-            return clips;
+            return ListOfClips;
         }
 
         private static Reviews ParseMovieReviews(JToken jToken)
-        {
-            List<Review> reviews = new List<Review>();
+        {            
             Reviews MovieReviews = new Reviews();
 
             var jsonArray = (JArray)jToken;
