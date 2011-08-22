@@ -22,6 +22,7 @@ namespace wp7rt_client.Classes
         public string CriticsConsensus { get; set; }
         public MovieClips MovieClips { get; set; }
         public Reviews Reviews { get; set; }
+        public bool IndvidualMovieDataDownloaded { get; set; }
         
         public string AudienceRating { get { return ConvertAudienceRatings("Audience: NA","Audience: "); }  }
         public string CriticsRating { get { return ConvertCriticsRatings("Critics: NA", "Critics: "); } }
@@ -44,7 +45,8 @@ namespace wp7rt_client.Classes
             Links = new List<Link>();
             Posters = new List<Poster>();
             ReleaseDates = new List<ReleaseDate>();
-            Ratings = new List<Rating>();            
+            Ratings = new List<Rating>();
+            IndvidualMovieDataDownloaded = false;
         }
 
         #region LayoutAccessors

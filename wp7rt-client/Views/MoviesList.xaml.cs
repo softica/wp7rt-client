@@ -17,15 +17,12 @@ using System.Net.NetworkInformation;
 namespace wp7rt_client.Views
 {
     public partial class MoviesList : PhoneApplicationPage
-    {
-        public List<Movie> ListOfMovies { get; set; }
-        public string ListType { get; set; }
+    {        
         bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
-        
+           
         public MoviesList()
         {
-            InitializeComponent();
-            ListOfMovies = new List<Movie>();
+            InitializeComponent();            
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -44,216 +41,141 @@ namespace wp7rt_client.Views
             string type;
             NavigationContext.QueryString.TryGetValue("Type", out type);
 
-            if (ListOfMovies.Count != 0) { DisplayMovies(ListOfMovies); }
-
-            // Movies
+            //set page title
             if (type == "Theaters")
-            {                
-                ListMoviesInTheatres();
+            {
+                PageTitle.Text = "In Theaters";
             }
             else if (type == "BoxOffice")
             {
-                ListMoviesInBoxOffice();
+                PageTitle.Text = "Box Office";
             }
             else if (type == "Query")
             {
-                ListMoviesSearch(query);
+                PageTitle.Text = "Search Results";
             }
             else if (type == "Openings")
             {
-                ListMoviesOpenings();
+                PageTitle.Text = "Openings";
             }
             else if (type == "Upcoming")
             {
-                ListMoviesUpcoming();
-            } 
+                PageTitle.Text = "Upcoming";
+            }
             //DVD
             else if (type == "DVDTop")
             {
-                ListMoviesDVDTop();
+                PageTitle.Text = "DVD Top Rentals";
             }
             else if (type == "DVDCurrentReleases")
             {
-                ListMoviesDVDCurrentReleases();
+                PageTitle.Text = "DVD Current Releases";
             }
             else if (type == "DVDNewReleases")
             {
-                ListMoviesDVDNewReleases();
+                PageTitle.Text = "DVD New Releases";
             }
             else if (type == "DVDUpcoming")
             {
-                ListMoviesDVDUpcoming();
+                PageTitle.Text = "DVD Upcoming";
             }
             else if (type == "Similar")
             {
-                ListMoviesSimilar(query);
+                PageTitle.Text = "Similar Movies";
+            }
+
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            PhoneApplicationService.Current.State["Type"] = type;
+
+            MoviesDict = CheckMoviesDictionary(MoviesDict, type);
+
+            //check if movies list is already cached
+            //caching should not be active for custom movie search query and similar movies functionality
+            if (MoviesDict.ContainsKey(type) && MoviesDict[type].Count != 0 && type != "Similar" && type != "Query")
+            {
+                DisplayMovies(MoviesDict, type);
+            }
+            //list is not cached - query rottentomatoes API then
+            else
+            {
+
+                // Movies
+                if (type == "Theaters")
+                {
+                    QueryRottenTomatoes(APIEndpoints.LIST_IN_THEATERS);                    
+                }
+                else if (type == "BoxOffice")
+                {
+                    QueryRottenTomatoes(APIEndpoints.LIST_BOX_OFFICE);                                        
+                }
+                else if (type == "Query")
+                {
+                    string url = String.Format(APIEndpoints.MOVIE_SEARCH, query, APIEndpoints.PAGE_LIMIT);
+                    QueryRottenTomatoes(url);                        
+                }
+                else if (type == "Openings")
+                {
+                    QueryRottenTomatoes(APIEndpoints.LIST_OPENING_SOON);                         
+                }
+                else if (type == "Upcoming")
+                {
+                    QueryRottenTomatoes(APIEndpoints.LIST_UPCOMING);                                                                 
+                }
+                //DVD
+                else if (type == "DVDTop")
+                {
+                    QueryRottenTomatoes(APIEndpoints.TOP_DVD_RENTALS);                                                                                     
+                }
+                else if (type == "DVDCurrentReleases")
+                {
+                    QueryRottenTomatoes(APIEndpoints.DVD_CURRENT_RELEASES);                                                                                                         
+                }
+                else if (type == "DVDNewReleases")
+                {
+                    QueryRottenTomatoes(APIEndpoints.DVD_NEW_RELEASES);                             
+                }
+                else if (type == "DVDUpcoming")
+                {
+                    QueryRottenTomatoes(APIEndpoints.DVD_UPCOMING);                                                 
+                }
+                else if (type == "Similar")
+                {
+                    string url = String.Format(APIEndpoints.SIMILAR, query, APIEndpoints.PAGE_LIMIT);
+                    QueryRottenTomatoes(url);            
+                }
             }
         }
 
-        private void ListMoviesInTheatres()
+        private Dictionary<string, List<Movie>> CheckMoviesDictionary(Dictionary<string, List<Movie>> d, string type)
         {
-            PageTitle.Text = "In Theaters";
+            if (!d.ContainsKey(type))
+            {
+                List<Movie> MoviesList = new List<Movie>();
+                d.Add(type, MoviesList);
+            }
 
+            return d;
+        }
+
+        private void QueryRottenTomatoes(string query)
+        {
             if (moviesList.Items.Count == 0)
             {
-
-                Uri uri = new Uri(APIEndpoints.LIST_IN_THEATERS, UriKind.Absolute);
+                Uri uri = new Uri(query, UriKind.Absolute);
 
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
                 client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesInBoxOffice()
-        {
-            PageTitle.Text = "Box Office";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.LIST_BOX_OFFICE, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesSearch(string query)
-        {
-            PageTitle.Text = "Search Results";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                var url = String.Format(APIEndpoints.MOVIE_SEARCH, query, APIEndpoints.PAGE_LIMIT);
-                Uri uri = new Uri(url, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesOpenings()
-        {
-            PageTitle.Text = "Openings";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.LIST_OPENING_SOON, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesUpcoming()
-        {
-            PageTitle.Text = "Upcoming";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.LIST_UPCOMING, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesDVDNewReleases()
-        {
-            PageTitle.Text = "DVD New Releases";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.DVD_NEW_RELEASES, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesDVDCurrentReleases()
-        {
-            PageTitle.Text = "DVD Current Releases";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.DVD_CURRENT_RELEASES, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesDVDTop()
-        {
-            PageTitle.Text = "DVD Top Rentals";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.TOP_DVD_RENTALS, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesDVDUpcoming()
-        {
-            PageTitle.Text = "DVD Upcoming";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                Uri uri = new Uri(APIEndpoints.DVD_UPCOMING, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
-            }
-        }
-
-        private void ListMoviesSimilar(string query)
-        {
-            PageTitle.Text = "Similar Movies";
-
-            if (moviesList.Items.Count == 0)
-            {
-
-                var url = String.Format(APIEndpoints.SIMILAR, query, APIEndpoints.PAGE_LIMIT);
-                Uri uri = new Uri(url, UriKind.Absolute);
-
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-                client.DownloadStringAsync(uri);
-
             }
         }
 
         private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
+
+            List<Movie> ListOfMovies = new List<Movie>();
+
             string jsonResponse = e.Result.ToString();
             var movies = Parser.ParseMovieSearchResults(jsonResponse);
                       
@@ -262,13 +184,22 @@ namespace wp7rt_client.Views
                 ListOfMovies.Add(movie);
             }
 
-            DisplayMovies(ListOfMovies);
+            MoviesDict[Type] = ListOfMovies;
+
+            DisplayMovies(MoviesDict, Type);
 
         }
 
-        private void DisplayMovies(List<Movie> list)
+        private void DisplayMovies(Dictionary<string, List<Movie>> d, string Type)
         {
-            moviesList.ItemsSource = list;
+            if ((Type == "Similar" || Type == "Query") && d[Type].Count == 0)
+            {
+                SimilarNotFound.Text = "No movies found...";
+            }
+            else
+            {
+                moviesList.ItemsSource = d[Type];
+            }
         }
 
 
@@ -284,7 +215,6 @@ namespace wp7rt_client.Views
                 
             }
         }
-
 
         private void image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

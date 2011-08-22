@@ -42,16 +42,32 @@ namespace wp7rt_client.Views
                 NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
             }
 
-            if (movie.Reviews != null) { 
-                DisplayReviews(movie); 
-            }
             
-            var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_REVIEWS, movie.RottenTomatoesId);
-            Uri uri = new Uri(url, UriKind.Absolute);
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
 
-            WebClient client = new WebClient();
-            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-            client.DownloadStringAsync(uri);
+            bool MovieCached = false;
+
+            foreach (var MovieItem in MoviesDict[Type])
+            {
+                if (MovieItem.RottenTomatoesId == movie.RottenTomatoesId && movie.Reviews != null)
+                {
+                    DisplayReviews(MovieItem);
+                    MovieCached = true;
+                    break;
+                }
+            }
+
+            if (!MovieCached)
+            {
+
+                var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_REVIEWS, movie.RottenTomatoesId);
+                Uri uri = new Uri(url, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+            }
 
         }
 
@@ -62,10 +78,17 @@ namespace wp7rt_client.Views
 
             movie = Parser.ParseReviews(jsonResponse, movie);
 
-            foreach (var review in movie.Reviews.MovieReviews)
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
+
+            for (int i = 0; i < MoviesDict[Type].Count; i++)
             {
-                System.Diagnostics.Debug.WriteLine(review.Critic);
-            }
+                if (MoviesDict[Type][i].RottenTomatoesId == movie.RottenTomatoesId)
+                {
+                    MoviesDict[Type][i].Reviews = movie.Reviews;
+                    break;
+                }
+            } 
 
             DisplayReviews(movie);
         }

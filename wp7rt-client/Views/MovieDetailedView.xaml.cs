@@ -39,22 +39,54 @@ namespace wp7rt_client.Views
                 NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
             }
 
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
 
-            var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_INFORMATION, movie.RottenTomatoesId);
-            Uri uri = new Uri(url, UriKind.Absolute);
+            bool MovieCached = false;
 
-            WebClient client = new WebClient();
-            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-            client.DownloadStringAsync(uri);
+            foreach (var MovieItem in MoviesDict[Type])
+            {
+                if (MovieItem.RottenTomatoesId == movie.RottenTomatoesId && movie.IndvidualMovieDataDownloaded)
+                {
+                    DisplayMovieDetails(MovieItem);
+                    MovieCached = true;
+                    break;
+                }
+            }
 
-            //System.Diagnostics.Debug.WriteLine(movie.Genres);
-            //System.Diagnostics.Debug.WriteLine(movie.Cast);
+            if (!MovieCached)
+            {
+
+                var url = String.Format(APIEndpoints.MOVIE_INDIVIDUAL_INFORMATION, movie.RottenTomatoesId);
+                Uri uri = new Uri(url, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+
+                //System.Diagnostics.Debug.WriteLine(movie.Genres);
+                //System.Diagnostics.Debug.WriteLine(movie.Cast);
+            }
         }
 
         private void client_OpenReadCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             string jsonResponse = e.Result.ToString();
-            Movie movie = Parser.ParseMovie(jsonResponse);            
+            Movie movie = Parser.ParseMovie(jsonResponse);
+            movie.IndvidualMovieDataDownloaded = true;
+
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
+
+            for (int i=0; i < MoviesDict[Type].Count; i++)
+            {
+                if (MoviesDict[Type][i].RottenTomatoesId == movie.RottenTomatoesId)
+                {
+                    MoviesDict[Type][i] = movie;
+                    break;
+                }
+            }          
+            
             DisplayMovieDetails(movie);
         }
 

@@ -10,17 +10,18 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-
 using wp7rt_client.Classes;
+using Microsoft.Phone.Shell;
 
 namespace wp7rt_client
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        	    
         // Constructor
         public MainPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void BoxOffice_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

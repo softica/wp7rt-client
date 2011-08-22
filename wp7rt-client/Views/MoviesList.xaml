@@ -60,6 +60,7 @@
             <Grid Height="78" VerticalAlignment="Top">
                 <Image Source="{Binding ImageSourcePath}" Width="28" HorizontalAlignment="Left" Margin="8,4,0,4" RenderTransformOrigin="0.5,0.029"/>
             </Grid>
+            <TextBlock Name="SimilarNotFound" Height="75" Margin="8,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Trebuchet MS"/>
             
         </Grid>
         

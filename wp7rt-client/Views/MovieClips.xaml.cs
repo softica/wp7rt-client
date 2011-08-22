@@ -37,15 +37,32 @@ namespace wp7rt_client.Views
                 NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
             }
 
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
 
-            if (movie.MovieClips != null) { DisplayClips(movie); }
+            bool MovieCached = false;
 
-            var url = String.Format(APIEndpoints.MOVIE_CLIPS, movie.RottenTomatoesId);
-            Uri uri = new Uri(url, UriKind.Absolute);
-                        
-            WebClient client = new WebClient();
-            client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
-            client.DownloadStringAsync(uri);            
+            foreach (var MovieItem in MoviesDict[Type])
+            {
+                //check if clips list is already cached for the specified movie
+                if (MovieItem.RottenTomatoesId == movie.RottenTomatoesId && movie.MovieClips != null)
+                {
+                    DisplayClips(MovieItem);
+                    MovieCached = true;
+                    break;
+                }
+            }
+
+            if (!MovieCached)
+            {
+
+                var url = String.Format(APIEndpoints.MOVIE_CLIPS, movie.RottenTomatoesId);
+                Uri uri = new Uri(url, UriKind.Absolute);
+
+                WebClient client = new WebClient();
+                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
+                client.DownloadStringAsync(uri);
+            }
 
         }
 
@@ -56,10 +73,17 @@ namespace wp7rt_client.Views
 
             movie = Parser.ParseClips(jsonResponse, movie);
 
-            foreach (var clip in movie.MovieClips.Clips)
+            Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
+            string Type = PhoneApplicationService.Current.State["Type"] as string;
+
+            for (int i = 0; i < MoviesDict[Type].Count; i++)
             {
-                System.Diagnostics.Debug.WriteLine(clip.Title);
-            }            
+                if (MoviesDict[Type][i].RottenTomatoesId == movie.RottenTomatoesId)
+                {
+                    MoviesDict[Type][i].MovieClips = movie.MovieClips;
+                    break;
+                }
+            }         
 
             DisplayClips(movie);
         }

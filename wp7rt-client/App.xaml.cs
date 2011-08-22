@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using wp7rt_client.Classes;
 
 namespace wp7rt_client
 {
@@ -22,6 +23,8 @@ namespace wp7rt_client
         /// </summary>
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
+
+        Dictionary<string, Movie> d { get; set; }
 
         /// <summary>
         /// Constructor for the Application object.
@@ -66,6 +69,8 @@ namespace wp7rt_client
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            Dictionary<string, List<Movie>> d = new Dictionary<string, List<Movie>>();
+            PhoneApplicationService.Current.State["MoviesDict"] = d;
         }
 
         // Code to execute when the application is activated (brought to foreground)
