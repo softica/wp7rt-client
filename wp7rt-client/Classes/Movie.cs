@@ -36,6 +36,7 @@ namespace wp7rt_client.Classes
         public string DVDReleaseDate { get { return ConvertDVDReleaseDate(); } }
         public string SmallPoster { get { return ConvertPoster(); } }
         public string rtDirectLink { get { return ConvertDirectLink(); } }
+        public string YearMovieList { get { return ConvertYearMovieList(); } }
         
         public Movie()
         {
@@ -81,6 +82,12 @@ namespace wp7rt_client.Classes
                 r = r.Remove(r.Length - 2);
             }
             return r;
+        }
+
+        private string ConvertYearMovieList()
+        {
+            if (Year == -1) { return "NA"; }
+            return Year.ToString();
         }
 
         private string ConvertDirectorsMembers()

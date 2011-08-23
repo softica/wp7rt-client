@@ -105,9 +105,9 @@ namespace wp7rt_client.Views
             Genres.Text = movie.MovieGenres;
             DVD.Text = movie.DVDReleaseDate;
             InTheaters.Text = movie.TheatersReleaseDate;
-            Year.Text = "Year: " + movie.Year.ToString();
-            MPAA.Text = "MPAA Rating: " + movie.MpaaRating;
-            Runtime.Text = "Runtime: " + movie.Runtime.ToString();
+            Year.Text = "Year: " + movie.Year.ToString().Replace("-1", "NA"); ;
+            MPAA.Text = "MPAA Rating: " + movie.MpaaRating.Replace("-1", "NA"); ;
+            Runtime.Text = "Runtime: " + movie.Runtime.ToString().Replace("-1", "NA");
             if (movie.CriticsConsensus == "")
             {
                 Consensus.Text = "No critics consensus available yet...";

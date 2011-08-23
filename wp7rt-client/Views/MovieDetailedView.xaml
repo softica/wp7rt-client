@@ -38,13 +38,13 @@
                     </Grid>
                     <TextBlock Height="20" Margin="136,0,188,0" TextWrapping="Wrap" Name="Runtime" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" Width="124" />
                     	<TextBlock Height="20" TextWrapping="Wrap" Name="MPAA" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="182"/>
-                    	<TextBlock Height="20" Margin="136,0,154,20" TextWrapping="Wrap" Name="Year" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18"/>
-                    	<TextBlock Height="20" Margin="0,0,0,20" TextWrapping="Wrap" Text="" Name="DVD" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="158"/>
+                    	<TextBlock Height="20" Margin="136,0,188,20" TextWrapping="Wrap" Name="Year" Text="" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" Width="124" />
+                    	<TextBlock Height="20" Margin="0,0,0,20" TextWrapping="Wrap" Text="" Name="DVD" VerticalAlignment="Bottom" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="182"/>
                     	<TextBlock Margin="136,0,122,40" TextWrapping="Wrap" Text="" Name="InTheaters" FontFamily="Tahoma" FontSize="18" Height="20" VerticalAlignment="Bottom"/>
                     	<TextBlock Margin="136,50,0,60" TextWrapping="Wrap" Name="Genres" Text="" FontFamily="Tahoma" FontSize="18" TextTrimming="WordEllipsis"/>
-                    	<TextBlock Margin="0,6,154,0" TextWrapping="Wrap" Name="AudiencePerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" Width="57" HorizontalAlignment="Right" />
-                    	<TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Name ="CriticsPerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" HorizontalAlignment="Right" Width="71"/>
-                    	<Image Margin="136,0,0,0" Name="RatingImage" Source="/wp7rt-client;component/Images/fresh.png" Stretch="Fill" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="42"/>
+                        <TextBlock Margin="237,6,0,0" TextWrapping="Wrap" Name="CriticsPerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" Width="57" HorizontalAlignment="Left" />
+                    <TextBlock Margin="0,6,0,0" TextWrapping="Wrap" Name ="AudiencePerCent" Text="" FontFamily="Tahoma" FontSize="26.667" Height="34" VerticalAlignment="Top" HorizontalAlignment="Right" Width="71"/>
+                    	<Image Margin="136,6,0,0" Name="RatingImage" Source="/wp7rt-client;component/Images/fresh.png" Stretch="Fill" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="42"/>
                     	<TextBlock Height="20" Margin="182,13,209,0" TextWrapping="Wrap" Text="Critics" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18"/>
                     	<TextBlock Height="20" Margin="0,13,71,0" TextWrapping="Wrap" Text="Audience" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="18" HorizontalAlignment="Right" Width="79"/>
                     </Grid>
