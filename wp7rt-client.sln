@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wp7rt-client", "wp7rt-clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phone.Controls", "packages\Phone.Controls\Phone.Controls.csproj", "{71A41463-066F-444A-B774-5FB036C913A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{71A41463-066F-444A-B774-5FB036C913A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A41463-066F-444A-B774-5FB036C913A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A41463-066F-444A-B774-5FB036C913A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB08A19-B603-4DB4-8E6B-AB5F685C8CAD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

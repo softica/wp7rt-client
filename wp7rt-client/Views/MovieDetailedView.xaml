@@ -21,7 +21,7 @@
 
 
 				<TextBlock x:Name="movieTitile" Text="" FontSize="18" Foreground="Yellow" Width="280"/>
-				<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" HorizontalAlignment="Center" VerticalAlignment="Top"  />
+				<Image Height="77" x:Name="image1" Stretch="Fill" Width="260" Source="/wp7rt-client;component/Images/rotten-logo.png" />
 
 
 			</StackPanel>

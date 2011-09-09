@@ -1,0 +1,10 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="UnitTests" EntryPointType="UnitTests.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="UnitTests" Source="UnitTests.dll" />
+    <AssemblyPart x:Name="Microsoft.Silverlight.Testing" Source="Microsoft.Silverlight.Testing.dll" />
+    <AssemblyPart x:Name="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight" Source="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll" />
+    <AssemblyPart x:Name="wp7rt-client" Source="wp7rt-client.dll" />
+    <AssemblyPart x:Name="Phone.Controls" Source="Phone.Controls.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json.WindowsPhone" Source="Newtonsoft.Json.WindowsPhone.dll" />
+  </Deployment.Parts>
+</Deployment>

@@ -20,6 +20,7 @@ namespace wp7rt_client.Views
     public partial class MovieReviews : PhoneApplicationPage
     {
         bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+        private Phone.Controls.ProgressIndicator progress;
 
         public MovieReviews()
         {
@@ -35,7 +36,12 @@ namespace wp7rt_client.Views
         {
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
-
+            
+            if (this.progress == null)
+            {
+                this.progress = new Phone.Controls.ProgressIndicator();
+            }
+            
             if (!isNetworkAvailable)
             {
                 MessageBox.Show("Network is not available!");
@@ -67,6 +73,10 @@ namespace wp7rt_client.Views
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
                 client.DownloadStringAsync(uri);
+
+                this.progress.ProgressType = Phone.Controls.ProgressTypes.WaitCursor;
+                this.progress.Show();
+
             }
 
         }
@@ -77,6 +87,8 @@ namespace wp7rt_client.Views
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
 
             movie = Parser.ParseReviews(jsonResponse, movie);
+
+            this.progress.Hide();
 
             Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
             string Type = PhoneApplicationService.Current.State["Type"] as string;

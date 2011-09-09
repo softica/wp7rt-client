@@ -13,13 +13,15 @@ using Microsoft.Phone.Controls;
 using wp7rt_client.Classes;
 using Microsoft.Phone.Shell;
 using System.Net.NetworkInformation;
+using Phone.Controls;
 
 namespace wp7rt_client.Views
 {
     public partial class MoviesList : PhoneApplicationPage
     {        
         bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
-           
+        private Phone.Controls.ProgressIndicator progress; 
+  
         public MoviesList()
         {
             InitializeComponent();            
@@ -33,6 +35,11 @@ namespace wp7rt_client.Views
             {
                 MessageBox.Show("Network is not available!");
                 NavigationService.Navigate(new Uri("/MainPage/", UriKind.Relative));
+            }
+
+            if (this.progress == null)
+            {
+                this.progress = new Phone.Controls.ProgressIndicator();
             }
 
             string query;
@@ -98,7 +105,6 @@ namespace wp7rt_client.Views
             //list is not cached - query rottentomatoes API then
             else
             {
-
                 // Movies
                 if (type == "Theaters")
                 {
@@ -166,6 +172,9 @@ namespace wp7rt_client.Views
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
                 client.DownloadStringAsync(uri);
+
+                this.progress.ProgressType = ProgressTypes.WaitCursor;
+                this.progress.Show();
             }
         }
 
@@ -184,9 +193,12 @@ namespace wp7rt_client.Views
                 ListOfMovies.Add(movie);
             }
 
+            SimilarNotFound.Text = "";
             MoviesDict[Type] = ListOfMovies;
 
             DisplayMovies(MoviesDict, Type);
+
+            this.progress.Hide();
 
         }
 

@@ -15,6 +15,7 @@ using Microsoft.Phone.Shell;
 using System.Windows.Media.Imaging;
 using Microsoft.Phone.Tasks;
 using System.Net.NetworkInformation;
+using Phone.Controls;
 
 namespace wp7rt_client.Views
 {
@@ -22,6 +23,7 @@ namespace wp7rt_client.Views
     {
 
         bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+        private Phone.Controls.ProgressIndicator progress;
 
         public MovieDetailedView()
         {
@@ -32,6 +34,11 @@ namespace wp7rt_client.Views
         {
             base.OnNavigatedTo(e);
             Movie movie = PhoneApplicationService.Current.State["Movie"] as Movie;
+
+            if (this.progress == null)
+            {
+                this.progress = new Phone.Controls.ProgressIndicator();
+            }
 
             if (!isNetworkAvailable)
             {
@@ -63,9 +70,11 @@ namespace wp7rt_client.Views
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_OpenReadCompleted);
                 client.DownloadStringAsync(uri);
-
+               
                 //System.Diagnostics.Debug.WriteLine(movie.Genres);
                 //System.Diagnostics.Debug.WriteLine(movie.Cast);
+                this.progress.ProgressType = Phone.Controls.ProgressTypes.WaitCursor;
+                this.progress.Show();
             }
         }
 
@@ -74,6 +83,8 @@ namespace wp7rt_client.Views
             string jsonResponse = e.Result.ToString();
             Movie movie = Parser.ParseMovie(jsonResponse);
             movie.IndvidualMovieDataDownloaded = true;
+
+            this.progress.Hide();
 
             Dictionary<string, List<Movie>> MoviesDict = PhoneApplicationService.Current.State["MoviesDict"] as Dictionary<string, List<Movie>>;
             string Type = PhoneApplicationService.Current.State["Type"] as string;
